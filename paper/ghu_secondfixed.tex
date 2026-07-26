@@ -71,7 +71,13 @@ locus, and no proof is given. Ciucu--Krattenthaler wrote in 2008 that they could
 representation-theoretic interpretation of their factorisations, and Ayyer--Behrend and
 Ayyer--Kumari repeated it in 2018 and 2025; the reading offered here --- a character on the
 non-identity component --- is of that kind, conditional on the identity being true, and it
-reaches the factorisation and not only the vanishing. What we take to be the result of this
+reaches the factorisation and not only the vanishing. \emph{Added in version~3:} that reading has a
+home in the literature we failed to cite in version~1. Characters of a disconnected group on a
+non-identity component are \emph{twining characters}, and the identity that computes them by folding
+is due to Jantzen~\cite{Jantzen} and, in the form closest to ours, to Kumar--Lusztig--Prasad~\cite{KLP};
+our restriction is reducible, so it is reached from theirs by one step of Clifford theory. The
+mechanism is theirs and we credit it here; what this paper contributes is the explicit evaluation at
+free~$t$. What we take to be the result of this
 paper, however, is neither the identity nor that reading, but what they make possible:
 $\Phi=F\circ Q$, the physical functional factoring through the $2$-quotient. The Schur identity
 is the door; the reduction is what is behind it.
@@ -280,7 +286,43 @@ where $\nu$ denotes the three-part quotient component. In the middle case $z=0$ 
 well, through $\chi_{-1}=0$.
 \end{observation}
 
-So the character is always $\pm$ a product of exactly three $SU(2)$ characters, or zero, and
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[x=5.0mm,y=5.0mm,line join=round]
+\definecolor{evenc}{RGB}{31,78,121}\definecolor{oddc}{RGB}{178,34,34}
+\definecolor{lamfill}{RGB}{205,220,236}
+% lambda = (7,3,1,1) solid, staircase rho = (3,2,1,0) dashed: row length = beta
+\foreach \r/\L/\S in {0/7/3, 1/3/2, 2/1/1, 3/1/0}{
+  \foreach \c in {1,...,\L}{\draw[fill=lamfill,draw=evenc!70] (\c-1,-\r) rectangle ++(1,-1);}
+  \ifnum\S>0 \foreach \c in {1,...,\S}{\draw[dashed,draw=black!35,fill=white]
+      (\L+\c-1,-\r) rectangle ++(1,-1);}\fi}
+\foreach \r/\n in {0/1,1/2,2/3,3/4}{\node[anchor=east,font=\footnotesize] at (-0.3,-\r-0.5) {$\lambda_\n$};}
+\node[anchor=west,evenc,font=\footnotesize] at (10.4,-0.5) {$\beta_1=10$};
+\node[anchor=west,oddc, font=\footnotesize] at (10.4,-1.5) {$\beta_2=5$};
+\node[anchor=west,evenc,font=\footnotesize] at (10.4,-2.5) {$\beta_3=2$};
+\node[anchor=west,oddc, font=\footnotesize] at (10.4,-3.5) {$\beta_4=1$};
+\node[anchor=north,font=\footnotesize] at (5,-4.5)
+  {$\lambda$ (solid) $+$ staircase $\rho$ (dashed) $=$ row lengths $\beta$};
+% the parity split and the three half-differences, stacked
+\node[anchor=west,evenc,font=\footnotesize] at (15.6,-0.4) {$E=\{10,\,2\}$};
+\node[anchor=west,evenc,font=\footnotesize] at (20.0,-0.4) {within $E$:\; $\tfrac{10-2}{2}-1=\mathbf{3}$};
+\node[anchor=west,oddc, font=\footnotesize] at (15.6,-1.8) {$O=\{5,\,1\}$};
+\node[anchor=west,oddc, font=\footnotesize] at (20.0,-1.8) {within $O$:\; $\tfrac{5-1}{2}-1=\mathbf{1}$};
+\node[anchor=west,black!60,font=\footnotesize] at (15.6,-3.2) {$E$ vs $O$};
+\node[anchor=west,black!60,font=\footnotesize] at (20.0,-3.2) {across:\; $\bigl|\tfrac{12-6}{2}\bigr|-1=\mathbf{2}$};
+\draw[black!25] (15.4,-4.0) -- (27.6,-4.0);
+\node[anchor=west,font=\small] at (15.6,-4.8) {$D(t)\;=\;-\,\chi_{1}\,\chi_{2}\,\chi_{3}$};
+\end{tikzpicture}
+\caption{The three spins, read off one diagram. Attaching the staircase $\rho=(3,2,1,0)$ to
+$\lambda=(7,3,1,1)$ turns the row lengths into the beta-set $\beta=(10,5,2,1)$. Splitting $\beta$
+by parity gives $E$ and $O$; the two \emph{within-class} half-differences and the one
+\emph{cross-class} half-difference, each less one, are the three spins $(3,1,2)$, and
+\eqref{eq:sign} fixes the sign. No shape hypothesis on $\lambda$ enters anywhere.}
+\label{fig:readoff}
+\end{figure}
+
+So the character is always $\pm$ a product of exactly three $SU(2)$ characters, or zero
+(Figure~\ref{fig:readoff}), and
 --- this is the point worth pausing on --- \textbf{there is no hypothesis on the shape of
 $\lambda$}. Ciucu--Krattenthaler and Ayyer--Behrend must assume self-complementarity;
 \eqref{eq:closedform} assumes nothing. That difference is not an improvement on their theorem;
@@ -369,6 +411,25 @@ This is Part~III's class $\mathcal Z$. The two vanishing mechanisms of
 $z$ degenerates --- are disjoint, even though the two $\lambda$-shorthands boxed above are not
 mutually exclusive as written.
 \end{proposition}
+
+\paragraph{Attribution added in version~3.}
+The first branch is not ours. Setting $t=1$ sends our
+alphabet to the order-2 element $(1,-1,1,1)$, and our rigidity lemma ($D\equiv0$ exactly when
+$D(1)=0$) carries the criterion there and back. Karmakar~\cite{Karmakar}, Thm.~1A, states precisely
+that criterion for $\mathrm{GL}(n,\mathbb{C})$ at $C_{n-k,k}$: his $\eta_i(\lambda)$ is our parity
+split of $\lambda+\rho$, and his normalisation ``$\#\eta_0\ge\#\eta_1$ after twisting by the
+determinant character'' is our determinant twist. His Thm.~1B goes further and factorises the value
+at that element through the $2$-quotient, constant included --- the $t=1$ shadow of
+\eqref{eq:closedform}. What remains specific to this paper is the second branch and, above all, the
+evaluation at \emph{free} $t$. That programme is live: Nadimpalli--Pattanayak--Prasad~\cite{NPP}
+generalise~\cite{Karmakar} to torsion elements and pose, as a question of the third author, exactly
+this shape --- vanishing when one centraliser dimension exceeds another, and a constant times a
+\emph{dimension} when they agree. Our $t=1$ point is an instance of it. The deformation off that
+point is not: their programme has no free parameter, and no non-identity component. (We checked, and
+record the negative: $s_\lambda(1,-1,t,t^{-1})$ is \emph{not} $\pm$ a constant times
+$s_{\lambda^{(0)}}(1,t,t^{-1})$ --- $0$ of $105$ cases --- so the free-$t$ object is not simply the
+character of the centraliser representation whose dimension Karmakar's Thm.~1B computes.)
+
 
 \paragraph{Why this is a proposition and not a corollary.} The statement does not depend on
 Observation~\ref{obs:main}. Part~III proves the classification by a different route and
@@ -790,7 +851,9 @@ nothing --- we borrow the engine and say where it stalls\\
 $t$-core / $t$-quotient governing vanishing at $\omega^kX$ &
 Ayyer--Kumari~\cite{AK}, Kumari~\cite{Kumari}, Albion~\cite{Albion},
 Karmakar~\cite{Karmakar} &
-nothing; a different alphabet family\\
+\textbf{v3 correction:} Karmakar Thm.~1A \emph{is} the first branch of our
+vanishing criterion, and his Thm.~1B is the $2$-quotient factorisation at
+$t=1$; only free $t$ is ours\\
 \midrule
 \rowcolor{softgrey}
 the closed form \eqref{eq:closedform} & --- &
@@ -828,8 +891,13 @@ theorem classical group characters plane partitions}; \emph{Schur function at $(
 product of orthogonal and symplectic characters}; \emph{bialternant block determinant
 $\det(A-B)\det(A+B)$}; \emph{beta-set residue classes Weyl numerator vanishes}; \emph{character
 of $GL(n)$ on the non-identity component of $O(n)$}. Sources read: \cite{CK,AB,AK,Kumari,%
-Albion,Karmakar}, and Littlewood's book Ch.~XI. We did not find \eqref{eq:closedform}, and we
-did not find any statement of the vanishing criterion for this alphabet.
+Albion,Karmakar}, and Littlewood's book Ch.~XI. We did not find \eqref{eq:closedform}.
+\emph{Versions~1 and~2 added here ``and we did not find any statement of the vanishing criterion
+for this alphabet''. That sentence was wrong, it stood in both published versions, and it is
+withdrawn.} Karmakar~\cite{Karmakar} was cited from version~1 onward but was never read; read in full
+since, his Thm.~1A states the criterion at the order-2 element, and our own rigidity lemma transports
+it to free $t$. The failure was not the search but the
+reading: the paper was in our bibliography the whole time.
 
 \emph{Two caveats that belong here and not in a footnote.} First, the identity is small and
 elementary enough to be the kind of thing that lives unlabelled in a mid-century monograph; we
@@ -945,6 +1013,16 @@ polynomials in $w$, and cumulants add.
 non-identically distributed uniform random variables}, arXiv:math/0411298, \S3; the
 Dirichlet-kernel / Chebyshev-$U$ dictionary identifying the convolution with a product of
 $SU(2)$ characters.
+\bibitem{Jantzen} J.C.~Jantzen, \emph{Darstellungen halbeinfacher Gruppen und kontravariante
+Formen}, J. Reine Angew. Math. \textbf{290} (1977) 117--141.
+
+\bibitem{KLP} S.~Kumar, G.~Lusztig, D.~Prasad, \emph{Characters of simplylaced nonconnected groups
+versus characters of nonsimplylaced connected groups}, Contemp. Math. \textbf{478} (2009) 99--101,
+\texttt{arXiv:math/0701615}.
+
+\bibitem{NPP} S.~Nadimpalli, S.~Pattanayak, D.~Prasad, \emph{Character theory at a torsion
+element}, \texttt{arXiv:2504.14684} (2025).
+
 \bibitem{Macdonald} I.G.~Macdonald, \emph{Symmetric Functions and Hall Polynomials}, 2nd ed.,
 Oxford University Press (1995); Ch.~I, Ex.~1.8 for the $t$-core/$t$-quotient bijection.
 \bibitem{LittlewoodBook} D.E.~Littlewood, \emph{The Theory of Group Characters and Matrix

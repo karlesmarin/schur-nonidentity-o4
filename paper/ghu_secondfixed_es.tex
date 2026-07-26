@@ -75,7 +75,13 @@ de ceros, y no se da demostraci\'on. Ciucu--Krattenthaler escribieron en 2008 qu
 ofrecer una interpretaci\'on en t\'erminos de teor\'ia de representaciones de sus
 factorizaciones, y Ayyer--Behrend y Ayyer--Kumari lo repitieron en 2018 y 2025; la lectura que
 se ofrece aqu\'i --- un car\'acter sobre la componente no identidad --- es de ese tipo, condicionada a que la
-identidad sea cierta, y alcanza la factorizaci\'on y no s\'olo la anulaci\'on. Lo que
+identidad sea cierta, y alcanza la factorizaci\'on y no s\'olo la anulaci\'on. \emph{A\~nadido en
+la versi\'on~3:} esa lectura tiene una casa en la literatura que la versi\'on~1 no cit\'o. Los
+caracteres de un grupo disconexo sobre una componente no identidad son \emph{caracteres de twining},
+y la identidad que los calcula por plegado es de Jantzen~\cite{Jantzen} y, en la forma m\'as pr\'oxima
+a la nuestra, de Kumar--Lusztig--Prasad~\cite{KLP}; nuestra restricci\'on es reducible, de modo que se
+alcanza desde la suya con un paso de teor\'ia de Clifford. El mecanismo es de ellos y aqu\'i se les
+acredita; lo que aporta este art\'iculo es la evaluaci\'on expl\'icita con $t$ libre. Lo que
 consideramos el resultado de este art\'iculo, sin embargo, no es la identidad ni esa lectura,
 sino lo que ambas hacen posible: $\Phi=F\circ Q$, el funcional f\'isico factorizando a trav\'es
 del $2$-cociente. La identidad de Schur es la puerta; la reducci\'on es lo que hay detr\'as.
@@ -295,8 +301,44 @@ donde $\nu$ denota la componente del cociente que tiene tres partes. En el caso 
 $z=0$ da tambi\'en cero, a trav\'es de $\chi_{-1}=0$.
 \end{observacion}
 
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[x=5.0mm,y=5.0mm,line join=round]
+\definecolor{evenc}{RGB}{31,78,121}\definecolor{oddc}{RGB}{178,34,34}
+\definecolor{lamfill}{RGB}{205,220,236}
+% lambda = (7,3,1,1) solid, staircase rho = (3,2,1,0) dashed: row length = beta
+\foreach \r/\L/\S in {0/7/3, 1/3/2, 2/1/1, 3/1/0}{
+  \foreach \c in {1,...,\L}{\draw[fill=lamfill,draw=evenc!70] (\c-1,-\r) rectangle ++(1,-1);}
+  \ifnum\S>0 \foreach \c in {1,...,\S}{\draw[dashed,draw=black!35,fill=white]
+      (\L+\c-1,-\r) rectangle ++(1,-1);}\fi}
+\foreach \r/\n in {0/1,1/2,2/3,3/4}{\node[anchor=east,font=\footnotesize] at (-0.3,-\r-0.5) {$\lambda_\n$};}
+\node[anchor=west,evenc,font=\footnotesize] at (10.4,-0.5) {$\beta_1=10$};
+\node[anchor=west,oddc, font=\footnotesize] at (10.4,-1.5) {$\beta_2=5$};
+\node[anchor=west,evenc,font=\footnotesize] at (10.4,-2.5) {$\beta_3=2$};
+\node[anchor=west,oddc, font=\footnotesize] at (10.4,-3.5) {$\beta_4=1$};
+\node[anchor=north,font=\footnotesize] at (5,-4.5)
+  {$\lambda$ (s\'olido) $+$ escalera $\rho$ (discontinua) $=$ longitudes de fila $\beta$};
+% the parity split and the three half-differences, stacked
+\node[anchor=west,evenc,font=\footnotesize] at (15.6,-0.4) {$E=\{10,\,2\}$};
+\node[anchor=west,evenc,font=\footnotesize] at (20.0,-0.4) {en $E$:\; $\tfrac{10-2}{2}-1=\mathbf{3}$};
+\node[anchor=west,oddc, font=\footnotesize] at (15.6,-1.8) {$O=\{5,\,1\}$};
+\node[anchor=west,oddc, font=\footnotesize] at (20.0,-1.8) {en $O$:\; $\tfrac{5-1}{2}-1=\mathbf{1}$};
+\node[anchor=west,black!60,font=\footnotesize] at (15.6,-3.2) {$E$ vs $O$};
+\node[anchor=west,black!60,font=\footnotesize] at (20.0,-3.2) {cruzado:\; $\bigl|\tfrac{12-6}{2}\bigr|-1=\mathbf{2}$};
+\draw[black!25] (15.4,-4.0) -- (27.6,-4.0);
+\node[anchor=west,font=\small] at (15.6,-4.8) {$D(t)\;=\;-\,\chi_{1}\,\chi_{2}\,\chi_{3}$};
+\end{tikzpicture}
+\caption{Los tres espines, le\'idos de un solo diagrama. Al adosar la escalera
+$\rho=(3,2,1,0)$ a $\lambda=(7,3,1,1)$, las longitudes de fila pasan a ser el $\beta$-conjunto
+$\beta=(10,5,2,1)$. Partir $\beta$ por paridad da $E$ y $O$; las dos semidiferencias
+\emph{dentro de clase} y la \emph{cruzada}, cada una menos uno, son los tres espines $(3,1,2)$, y
+\eqref{eq:sign} fija el signo. En ning\'un punto entra hip\'otesis alguna sobre la forma de
+$\lambda$.}
+\label{fig:readoff}
+\end{figure}
+
 As\'i que el car\'acter es siempre $\pm$ un producto de exactamente tres caracteres de $SU(2)$,
-o cero, y --- este es el punto en el que merece la pena detenerse --- \textbf{no hay hip\'otesis
+o cero (Figura~\ref{fig:readoff}), y --- este es el punto en el que merece la pena detenerse --- \textbf{no hay hip\'otesis
 alguna sobre la forma de $\lambda$}. Ciucu--Krattenthaler y Ayyer--Behrend han de suponer
 autocomplementariedad; \eqref{eq:closedform} no supone nada. Esa diferencia no es una mejora de
 su teorema; es s\'intoma de un mecanismo distinto, y \S\ref{sec:why} dice de cu\'al.
@@ -389,6 +431,25 @@ Esta es la clase $\mathcal Z$ de la Parte~III. Los dos mecanismos de anulaci\'on
 \'indice cruzado $z$ degenera --- son disjuntos, aunque las dos abreviaturas en $\lambda$ del
 recuadro no sean mutuamente excluyentes tal como est\'an escritas.
 \end{proposicion}
+
+\paragraph{Atribuci\'on a\~nadida en la versi\'on~3.}
+La primera rama no es nuestra. Poner $t=1$ env\'ia nuestro alfabeto al elemento de orden~2
+$(1,-1,1,1)$, y nuestro lema de rigidez ($D\equiv0$ exactamente cuando $D(1)=0$) lleva el criterio
+de ida y vuelta. Karmakar~\cite{Karmakar}, Thm.~1A, enuncia precisamente ese criterio para
+$\mathrm{GL}(n,\mathbb{C})$ en $C_{n-k,k}$: su $\eta_i(\lambda)$ es nuestro corte de paridad de
+$\lambda+\rho$, y su normalizaci\'on ``$\#\eta_0\ge\#\eta_1$ tras torcer por el car\'acter
+determinante'' es nuestro twist de determinante. Su Thm.~1B va m\'as lejos y factoriza el valor en
+ese elemento a trav\'es del $2$-cociente, constante incluida --- la sombra en $t=1$ de
+\eqref{eq:closedform}. Lo que queda espec\'ifico de este art\'iculo es la segunda rama y, sobre
+todo, la evaluaci\'on con $t$ \emph{libre}. Ese programa est\'a vivo: Nadimpalli--Pattanayak--Prasad~\cite{NPP}
+generalizan~\cite{Karmakar} a elementos de torsi\'on y plantean, como pregunta del tercer autor,
+exactamente esta forma: anulaci\'on cuando una dimensi\'on de centralizador excede a otra, y una
+constante por una \emph{dimensi\'on} cuando coinciden. Nuestro punto $t=1$ es un caso suyo. La
+deformaci\'on fuera de ese punto no lo es: su programa no tiene par\'ametro libre ni componente no
+identidad. (Lo comprobamos y registramos el negativo: $s_\lambda(1,-1,t,t^{-1})$ \emph{no} es $\pm$
+una constante por $s_{\lambda^{(0)}}(1,t,t^{-1})$ --- $0$ de $105$ casos --- de modo que el objeto
+con $t$ libre no es sin m\'as el car\'acter de la representaci\'on del centralizador cuya dimensi\'on
+calcula el Thm.~1B de Karmakar.)
 
 \paragraph{Por qu\'e es proposici\'on y no corolario.} El enunciado no depende de la
 Observaci\'on~\ref{obs:main}. La Parte~III demuestra la clasificaci\'on por otra v\'ia y la
@@ -835,7 +896,9 @@ nada --- tomamos prestado el motor y decimos d\'onde se cala\\
 $t$-n\'ucleo / $t$-cociente gobernando la anulaci\'on en $\omega^kX$ &
 Ayyer--Kumari~\cite{AK}, Kumari~\cite{Kumari}, Albion~\cite{Albion},
 Karmakar~\cite{Karmakar} &
-nada; otra familia de alfabetos\\
+\textbf{correcci\'on v3:} el Thm.~1A de Karmakar \emph{es} la primera rama de
+nuestro criterio de anulaci\'on, y su Thm.~1B es la factorizaci\'on por
+$2$-cociente en $t=1$; s\'olo la $t$ libre es nuestra\\
 \midrule
 \rowcolor{softgrey}
 la forma cerrada \eqref{eq:closedform} & --- &
@@ -876,8 +939,13 @@ at $(x,\bar x,1)$ product of orthogonal and symplectic characters}; \emph{bialte
 determinant $\det(A-B)\det(A+B)$}; \emph{beta-set residue classes Weyl numerator vanishes};
 \emph{character of $GL(n)$ on the non-identity component of $O(n)$}. Fuentes le\'idas:
 \cite{CK,AB,AK,Kumari,Albion,Karmakar}, y el Cap.~XI del libro de Littlewood. No encontramos
-\eqref{eq:closedform}, ni encontramos enunciado alguno del criterio de anulaci\'on para este
-alfabeto.
+\eqref{eq:closedform}. \emph{Las versiones~1 y~2 a\~nad\'ian aqu\'i ``ni encontramos enunciado alguno
+del criterio de anulaci\'on para este alfabeto''. Esa frase era falsa, estuvo en las dos versiones
+publicadas, y queda retirada.} Karmakar~\cite{Karmakar} estaba citado desde la versi\'on~1 pero nunca
+se hab\'ia le\'ido; le\'ido entero
+desde entonces, su Thm.~1A enuncia el criterio en el elemento de orden~2, y nuestro propio lema de
+rigidez lo transporta a $t$ libre. El fallo no fue la b\'usqueda sino la lectura: el art\'iculo
+estuvo en nuestra bibliograf\'ia todo el tiempo.
 
 \emph{Dos salvedades que van aqu\'i y no en una nota al pie.} Primera: la identidad es lo
 bastante peque\~na y elemental como para ser de esas cosas que viven sin etiqueta en una
@@ -1000,6 +1068,16 @@ anchura $w$ son polinomios en $w$, y los cumulantes se suman.
 non-identically distributed uniform random variables}, arXiv:math/0411298, \S3; el diccionario
 n\'ucleo de Dirichlet / Chebyshev-$U$ que identifica la convoluci\'on con un producto de
 caracteres de $SU(2)$.
+\bibitem{Jantzen} J.C.~Jantzen, \emph{Darstellungen halbeinfacher Gruppen und kontravariante
+Formen}, J. Reine Angew. Math. \textbf{290} (1977) 117--141.
+
+\bibitem{KLP} S.~Kumar, G.~Lusztig, D.~Prasad, \emph{Characters of simplylaced nonconnected groups
+versus characters of nonsimplylaced connected groups}, Contemp. Math. \textbf{478} (2009) 99--101,
+\texttt{arXiv:math/0701615}.
+
+\bibitem{NPP} S.~Nadimpalli, S.~Pattanayak, D.~Prasad, \emph{Character theory at a torsion
+element}, \texttt{arXiv:2504.14684} (2025).
+
 \bibitem{Macdonald} I.G.~Macdonald, \emph{Symmetric Functions and Hall Polynomials}, 2\textsuperscript{a} ed.,
 Oxford University Press (1995); Cap.~I, Ej.~1.8 para la biyecci\'on $t$-n\'ucleo/$t$-cociente.
 \bibitem{LittlewoodBook} D.E.~Littlewood, \emph{The Theory of Group Characters and Matrix
