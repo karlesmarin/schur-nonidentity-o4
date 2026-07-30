@@ -7,7 +7,7 @@
 
 **For every partition $\lambda$ with at most four rows, $s_\lambda(1,-1,t,t^{-1})$ is zero, or $\pm$ a product of exactly three $SU(2)$ characters read off the 2-quotient of $\lambda$ — with no hypothesis on the shape of $\lambda$.**
 
-**📄 Paper (EN + ES), the three figures with their generators, and a verification script on Zenodo → https://doi.org/10.5281/zenodo.21463000**
+**📄 Paper (EN + ES), each with its own four plates and their generators, and seven verification runs with their archived output, on Zenodo → https://doi.org/10.5281/zenodo.21463000**
 
 > ### 📚 Part **IV** of a series
 > - **Part I — *Anomaly- and Tadpole-Compatible Fermion Completion of 6D SU(4) GHU***
@@ -82,18 +82,31 @@ parts $\le 14$ and all 4845 with parts $\le 16$, against the bialternant in exac
 with no mismatch — and **not proved**. The zero-locus statement is a **Proposition**, proved
 independently in Part III. **Rank two is open**, and the paper says exactly where and why.
 
+**Version 4** withdraws one claim, forces one, and adds one. The rank-two partition offered in
+versions 1–3 as a third cause of vanishing is the second cause written with six parts, and that
+cause holds at every number of reciprocal pairs. The dichotomy is forced: two of the three factors
+can never vanish, so the size-three profile never does. And the sign $\zeta$, which earlier
+versions could not interpret, is the sign of the parity index $n_+-n_-$ of the orbifold involution
+on $V_\lambda$, whose magnitude is the volume of the box — so the vanishing criterion says the
+orbifold projection is exactly balanced, and the reduction $\Phi=F\circ Q$ inverts in closed form.
+
 ## 📂 Contents
 
 ```
-paper/     ghu_secondfixed.tex/.pdf (EN), ghu_secondfixed_es.tex/.pdf (ES), and three figures
-scripts/   the verification script and the two figure generators
+paper/     ghu_secondfixed.tex/.pdf (EN), ghu_secondfixed_es.tex/.pdf (ES), four plates in each
+           language, the three figure generators, and outputs/ with every archived run
 ```
 
 | file | what |
 |---|---|
 | `verify_secondfixed.py` | reproduces and checks every displayed number vs the bialternant |
-| `make_fig_secondfixed.py` | the zero-locus plate and the two-programme figure |
-| `make_fig_spectrum3d.py` | the twist-imbalance spectrum, stratified by the 2-quotient |
+| `verify_v4_audit.py` | the counts, the closed form on all 3060, rigidity, and the rank-two rows |
+| `verify_v4_inverse.py` | the inversion: three moments return the three indices |
+| `verify_zeta_root.py` | the index identity `M₀ = n₊ − n₋` and `(p+1)(q+1)(r+1) = |n₊ − n₋|` |
+| `verify_v4_legacy.py` | the four counts that had no archived run before v4, plus the sign rules |
+| `check_structure.py` · `check_numbers.py` · `check_layout.py` | the audit pass: references, number backing, page layout |
+| `make_fig_secondfixed.py` · `make_fig_spectrum3d.py` · `make_fig_index.py` | the plates; `--es` for the Spanish edition |
+| `outputs/` | the saved stdout of every run, so each number in the paper is greppable |
 
 ## 📖 Citing
 

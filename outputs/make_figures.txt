@@ -1,0 +1,14 @@
+== make_fig_secondfixed.py (EN then ES)
+fig_zerolocus.pdf   156 occupied cells
+fig_families.pdf    written
+fig_zerolocus_es.pdf   156 occupied cells
+fig_families_es.pdf    written
+== make_fig_spectrum3d.py (EN then ES)
+wrote paper/fig_spectrum3d.pdf | 19 strata, s = 2 .. 20
+wrote paper/fig_spectrum3d_es.pdf | 19 strata, s = 2 .. 20
+wrote E:\proyectos\Curiosity\research\smeft_formalization\paper\fig_index.pdf / .png
+zeros 208 = a-only 96 + b-only 68 + both 44 ; non-zero 1612
+examples: [((12, 11, 6, 0), (0, 2, 3), 12, 10920), ((8, 6, 2, 0), (3, 3, 2), 48, 2640), ((9, 7, 3, 1), (3, 3, 2), -48, 2640), ((8, 5, 2, 0), (1, 1, 3), 16, 2464)]
+wrote E:\proyectos\Curiosity\research\smeft_formalization\paper\fig_index_es.pdf / .png
+zeros 208 = a-only 96 + b-only 68 + both 44 ; non-zero 1612
+examples: [((12, 11, 6, 0), (0, 2, 3), 12, 10920), ((8, 6, 2, 0), (3, 3, 2), 48, 2640), ((9, 7, 3, 1), (3, 3, 2), -48, 2640), ((8, 5, 2, 0), (1, 1, 3), 16, 2464)]

@@ -2,6 +2,11 @@
 % Parte IV, version espanola de ghu_secondfixed.tex. El segundo punto fijo de la inversion: una
 % forma cerrada para la funcion de Schur en el elemento generico de la componente no identidad de
 % O(2n), cuyo lugar de ceros es la clase degenerada de la Parte III. Compilar: pdflatex x2.
+% v4 (2026-07-30): RETIRA la "tercera causa de anulacion" de rango dos de v1-v3 -- esa particion
+% es la rama (b) escrita con seis partes, y la rama (b) es suficiente en todo rango por las mismas
+% dos lineas; afila la dicotomia (los factores uno y dos no pueden anularse, luego el perfil de
+% tamano tres no se anula nunca); anade la Proposicion 3, la torre de momentos es invertible en
+% forma cerrada; y da los recuentos por mecanismo. Auditoria: PARTIV_V4_AUDIT.md.
 \documentclass[11pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -56,7 +61,15 @@ alg\'un criterio general. Lo es --- y de algo m\'as fuerte que un criterio. Para
 partici\'on $\lambda$ con a lo sumo cuatro filas, $s_\lambda(1,-1,t,t^{-1})$ es $\pm$ un
 producto de \emph{exactamente tres} caracteres de $SU(2)$, le\'idos del $2$-cociente de
 $\lambda$, o cero, sin hip\'otesis alguna sobre la forma de $\lambda$; la clasificaci\'on de la
-anulaci\'on es precisamente su lugar de ceros. La consecuencia es una compresi\'on:
+anulaci\'on es precisamente su lugar de ceros.
+\emph{A\~nadido en la versi\'on~4:} la reducci\'on es invertible --- tres momentos devuelven los
+tres enteros en forma cerrada, de modo que no pierde nada en absoluto y no s\'olo nada de lo que
+los momentos ven ---, y su signo y su tama\~no son un solo objeto: el \'indice de paridad
+$n_+-n_-$ de la involuci\'on del orbifold sobre $V_\lambda$, cuyo signo es el $\zeta$ de la
+identidad y cuya magnitud es el volumen de la caja. Y se retira una afirmaci\'on de las
+versiones~1--3: la partici\'on de rango
+dos que all\'i se ofrec\'ia como tercera causa de anulaci\'on es la segunda causa, escrita con las
+seis partes que el rango dos exige. La consecuencia es una compresi\'on:
 condicionada a esta identidad, una partici\'on de cuatro filas arbitrariamente grande se reduce
 a tres enteros sin perder nada de lo que la f\'isica de la Parte~III puede ver, de modo que toda
 cantidad que sobrevive a su cancelaci\'on dominante factoriza a trav\'es del $2$-cociente y la
@@ -132,7 +145,7 @@ s\'i, y por algo m\'as fuerte --- \S\ref{sec:closedform}\\
 \textbf{P2} \textquestiondown qu\'e es $D$ si no es cero? &
 $\pm$ tres caracteres de $SU(2)$ del $2$-cociente --- \eqref{eq:closedform}\\
 \textbf{P3} \textquestiondown por qu\'e dos ramas? &
-un producto de tres caracteres s\'olo tiene dos formas de anularse --- \S\ref{sec:zero}\\
+dos de los tres factores no pueden anularse nunca --- \S\ref{sec:zero}\\
 \rowcolor{softgrey}
 \textbf{P4} \textquestiondown estructura en los momentos? &
 $\delta$ es convoluci\'on triple; todo momento es polin\'omico --- \S\ref{sec:moments}\\
@@ -253,7 +266,7 @@ a la vista de \S\ref{sec:ranktwo}, no es obviamente cierta.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.94\textwidth]{fig_families.pdf}
+\includegraphics[width=0.94\textwidth]{fig_families_es.pdf}
 \caption{La sucesi\'on, y el paso que nunca se dio. Cada fila es un alfabeto estable bajo
 $x\mapsto x^{-1}$; la tercera columna cuenta los puntos que esa estabilidad deja fijos, porque
 son los que aportan por s\'i solos una fila al bialternante. A\~nadir el primer punto fijo $+1$
@@ -284,7 +297,7 @@ y sea $\chi_k(t)=t^k+t^{k-2}+\dots+t^{-k}$, con $\chi_{-1}=0$.
 \begin{observacion}[verificada, no demostrada]\label{obs:main}
 Para toda partici\'on $\lambda$ con a lo sumo cuatro filas,
 \begin{equation}\label{eq:closedform}
-\boxed{\;
+\boxed{
 s_\lambda(1,-1,t,t^{-1})=
 \begin{cases}
 0, & E=\varnothing\ \text{o}\ O=\varnothing,\\[3pt]
@@ -292,10 +305,10 @@ s_\lambda(1,-1,t,t^{-1})=
 \chi_{\lambda^{(0)}_1-\lambda^{(0)}_2}\;
 \chi_{\lambda^{(1)}_1-\lambda^{(1)}_2}\;
 \chi_{|z|-1},
-& |E|=|O|=2,\quad z=|\lambda^{(0)}|-|\lambda^{(1)}|-1,\\[3pt]
+& |E|=|O|=2,\; z=|\lambda^{(0)}|-|\lambda^{(1)}|-1,\\[3pt]
 \zeta\;\chi_{\nu_1-\nu_2}\;\chi_{\nu_2-\nu_3}\;\chi_{\nu_1-\nu_3+1},
 & |E|=3\ \text{o}\ |O|=3,
-\end{cases}\;}
+\end{cases}}
 \end{equation}
 donde $\nu$ denota la componente del cociente que tiene tres partes. En el caso intermedio,
 $z=0$ da tambi\'en cero, a trav\'es de $\chi_{-1}=0$.
@@ -393,7 +406,8 @@ Prop.~\ref{cor:Z} (v\'ia Parte~III); ambas suficiencias, que son folclore\\
 \eqref{eq:moments}, \eqref{eq:deltaclosed}, la log-concavidad\\
 \rowcolor{softgrey}
 \textbf{Abierto} & sospechado, con una sonda enunciada &
-el sentido del tercer factor, el rango dos, el origen del signo\\
+el sentido del tercer factor, el rango dos \emph{(el origen del signo sali\'o de esta fila en la
+v4: \eqref{eq:index})}\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -435,7 +449,11 @@ recuadro no sean mutuamente excluyentes tal como est\'an escritas.
 \paragraph{Atribuci\'on a\~nadida en la versi\'on~3.}
 La primera rama no es nuestra. Poner $t=1$ env\'ia nuestro alfabeto al elemento de orden~2
 $(1,-1,1,1)$, y nuestro lema de rigidez ($D\equiv0$ exactamente cuando $D(1)=0$) lleva el criterio
-de ida y vuelta. Karmakar~\cite{Karmakar}, Thm.~1A, enuncia precisamente ese criterio para
+de ida y vuelta.\footnote{\emph{Versi\'on~4:} ese lema se usa aqu\'i en rango uno y no se reclama
+en ning\'un otro sitio. En rango uno es exacto --- $D\equiv0\iff D(1)=0$ en las $3060$ particiones
+con cuatro partes $\le14$, sin violaciones --- y una evaluaci\'on de orden~2 es en general s\'olo
+un filtro que nunca deja escapar un cero, de modo que nada de este art\'iculo debe leerse como
+afirmarlo m\'as all\'a de un par rec\'iproco.} Karmakar~\cite{Karmakar}, Thm.~1A, enuncia precisamente ese criterio para
 $\mathrm{GL}(n,\mathbb{C})$ en $C_{n-k,k}$: su $\eta_i(\lambda)$ es nuestro corte de paridad de
 $\lambda+\rho$, y su normalizaci\'on ``$\#\eta_0\ge\#\eta_1$ tras torcer por el car\'acter
 determinante'' es nuestro twist de determinante. Su Thm.~1B va m\'as lejos y factoriza el valor en
@@ -447,9 +465,14 @@ exactamente esta forma: anulaci\'on cuando una dimensi\'on de centralizador exce
 constante por una \emph{dimensi\'on} cuando coinciden. Nuestro punto $t=1$ es un caso suyo. La
 deformaci\'on fuera de ese punto no lo es: su programa no tiene par\'ametro libre ni componente no
 identidad. (Lo comprobamos y registramos el negativo: $s_\lambda(1,-1,t,t^{-1})$ \emph{no} es $\pm$
-una constante por $s_{\lambda^{(0)}}(1,t,t^{-1})$ --- $0$ de $105$ casos --- de modo que el objeto
+una constante por $s_{\lambda^{(0)}}(1,t,t^{-1})$ --- $0$ de los $109$ casos no triviales con
+cuatro partes $\le5$ --- de modo que el objeto
 con $t$ libre no es sin m\'as el car\'acter de la representaci\'on del centralizador cuya dimensi\'on
-calcula el Thm.~1B de Karmakar.)
+calcula el Thm.~1B de Karmakar.\footnote{\emph{Versi\'on~4:} las versiones~1--3 daban esto como
+``$0$ de $105$ casos'' sin decir sobre qu\'e rango, y ning\'un rango que podamos reconstruir hoy
+produce $105$; el recuento se reenuncia con el rango sobre el que se ha vuelto a correr. El
+negativo en s\'i no cambia, y es algo m\'as fuerte de lo impreso: el \'unico caso proporcional en
+cualquier rango probado es la partici\'on vac\'ia, donde ambos lados valen la constante~$1$.})
 
 \paragraph{Por qu\'e es proposici\'on y no corolario.} El enunciado no depende de la
 Observaci\'on~\ref{obs:main}. La Parte~III demuestra la clasificaci\'on por otra v\'ia y la
@@ -461,28 +484,54 @@ asciende a la observaci\'on; s\'olo vuelve condicional la deducci\'on, y convien
 qu\'e direcci\'on corre la l\'ogica. Quien rechace \eqref{eq:closedform} conserva entera la
 Proposici\'on~\ref{cor:Z} y s\'olo pierde la explicaci\'on.
 
-\paragraph{Flanco abierto: \textquestiondown est\'a forzada la dicotom\'ia?} Podemos decir que
-no hay tercera rama; no podemos decir por qu\'e no podr\'ia haberla. En la forma cerrada las
-dos ramas son visiblemente especies distintas --- una mata el producto entero vaciando una
-clase de paridad, la otra mata un solo factor degenerando su \'indice --- y el lector puede
-preguntar con raz\'on si eso es una dicotom\'ia genuina o un artefacto del rango uno. Dos
-sondas lo zanjar\'ian. \emph{\textquestiondown Hay una dualidad que intercambie las ramas?}
-Ambas son invariantes bajo conjugaci\'on compuesta con complementaci\'on en un rect\'angulo
-adecuado, lo cual es sugerente y no lo hemos perseguido. \emph{\textquestiondown Y aparece una
-tercera rama en rango dos?} S\'i: \S\ref{sec:ranktwo} exhibe una partici\'on que se anula con
-ambas clases de paridad ocupadas, que no es ninguna de nuestras dos causas. De modo que la
-dicotom\'ia es un enunciado de rango uno, y llamarla hecho estructural ser\'ia excederse.
+\paragraph{Por qu\'e la dicotom\'ia est\'a forzada --- y una correcci\'on a las versiones~1--3.}
+Aquellas versiones dec\'ian que no hay tercera rama pero que no sab\'iamos por qu\'e no podr\'ia
+haberla, y cerraban con: \emph{``la dicotom\'ia es un enunciado de rango uno, y llamarla hecho
+estructural ser\'ia excederse''}. La primera mitad tiene una respuesta de dos l\'ineas que
+estaba a nuestro alcance y se nos pas\'o; la segunda es falsa, y falsa en la direcci\'on que
+cuesta m\'as ver --- nos quedamos cortos, y luego justificamos el quedarnos cortos con un
+contraejemplo que no lo es.
+
+\emph{Por qu\'e dos y no tres.} Porque dos de los tres factores de \eqref{eq:closedform} no
+pueden anularse nunca. Un factor $\chi_k$ es cero s\'olo en $k=-1$, y los dos primeros \'indices
+son $\lambda^{(0)}_1-\lambda^{(0)}_2$ y $\lambda^{(1)}_1-\lambda^{(1)}_2$, diferencias de partes
+consecutivas de una partici\'on y por tanto no negativas; en el perfil de tama\~no tres los tres
+\'indices son $\nu_1-\nu_2$, $\nu_2-\nu_3$ y $\nu_1-\nu_3+1$, los dos primeros no negativos y el
+tercero estrictamente positivo. As\'i que el \'unico \'indice que puede degenerar es el t\'ermino
+cruzado del perfil equilibrado, y la \'unica otra v\'ia hacia el cero es una clase de paridad
+vac\'ia. Dos ramas, y sin sitio para una tercera. En la misma l\'inea se sigue que \textbf{el
+perfil de tama\~no tres no se anula nunca} --- un enunciado que las versiones~1--3 pod\'ian haber
+hecho desde su propia f\'ormula y no hicieron.
+
+\emph{Y la dicotom\'ia no es un artefacto del rango uno.} Las versiones~1--3 ofrec\'ian
+$\lambda=(3,2,2,1,1,0)$ en rango dos como partici\'on que se anula ``con ambas clases de paridad
+ocupadas, que no es ninguna de nuestras dos causas''. Que las clases de paridad est\'en ocupadas
+descarta la primera causa y nada m\'as. Escrita con las seis partes que el rango dos exige, esa
+partici\'on cumple $\lambda_i+\lambda_{7-i}=3$ para todo $i$: es autocomplementaria de anchura
+impar, que es exactamente la segunda causa. Y la segunda causa tampoco est\'a confinada al rango
+uno. El argumento folcl\'orico que se registra m\'as abajo usa s\'olo que el alfabeto es estable
+bajo inversi\'on y tiene determinante $-1$, y $(1,-1,z_1,z_1^{-1},\dots,z_r,z_r^{-1})$ es un
+alfabeto as\'i para todo $r$; de modo que la autocomplementariedad de anchura impar fuerza la
+anulaci\'on con cualquier n\'umero de pares rec\'iprocos, nuestro propio ejemplo incluido. Lo que
+no podemos zanjar desde aqu\'i es el rec\'iproco --- si se anula algo \emph{m\'as} pasado el rango
+uno --- y \S\ref{sec:ranktwo} lo dice.
 
 La descomposici\'on es exacta y no deja nada. De las $560$ particiones que se anulan en el
-intervalo $\text{partes}\le16$, $420$ caen en la primera rama y $140$ en la segunda, y ninguna
-fuera de las dos (Figura~\ref{fig:zerolocus}).
+intervalo $\text{partes}\le16$, a $420$ las mata una clase de paridad vac\'ia y a las $140$
+restantes un \'indice cruzado degenerado, y a ninguna ninguna otra cosa
+(Figura~\ref{fig:zerolocus}). Ese reparto es por \emph{mecanismo}, y es disjunto; las dos
+abreviaturas en $\lambda$ del recuadro de arriba no lo son, y reparten las mismas $560$ como $420$
+y $240$, con $100$ particiones que cumplen ambas.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.86\textwidth]{fig_zerolocus.pdf}
-\caption{El lugar de ceros, dibujado por tama\~no y primera parte. Las celdas azules contienen
+\includegraphics[width=0.86\textwidth]{fig_zerolocus_es.pdf}
+\caption{El lugar de ceros sobre el rango $\text{partes}\le16$ --- el mismo rango del
+$560=420+140$ de arriba, y se dice aqu\'i porque una l\'amina dibujada sobre otro rango es otra
+l\'amina ---, por tama\~no y primera parte. Las celdas azules contienen
 una partici\'on matada por $\beta$-paridad alternante, las naranjas una matada por
-autocomplementariedad con constante impar, las partidas ambas. El contenido de la l\'amina es
+autocomplementariedad con constante impar, las partidas ambas; hay $156$ celdas ocupadas. El
+contenido de la l\'amina es
 lo que \emph{no} hay en ella: no hay un tercer color. Toda partici\'on en la que
 $s_\lambda(1,-1,t,t^{-1})$ se anula queda explicada por una de las dos ramas, que es lo que
 significa que la Proposici\'on~\ref{cor:Z} sea exhaustiva y no meramente correcta.}
@@ -494,7 +543,11 @@ autocomplementariedad con constante impar fuerce la anulaci\'on son dos l\'ineas
 escribiendo $\lambda^\star_i=c-\lambda_{5-i}$ se tiene $s_{\lambda^\star}(x)=(x_1\cdots x_4)^c
 s_\lambda(x^{-1})$; nuestro alfabeto es estable por inversi\'on, luego
 $s_\lambda(p^{-1})=s_\lambda(p)$; y $x_1\cdots x_4=\det=-1$. Si $\lambda^\star=\lambda$
-entonces $s_\lambda(p)=(-1)^cs_\lambda(p)$, y $c$ impar fuerza cero. Esta es la sombra, en
+entonces $s_\lambda(p)=(-1)^cs_\lambda(p)$, y $c$ impar fuerza cero. Nada en esas dos l\'ineas usa
+cuatro letras: con $N=2r+2$ de ellas y $\lambda^\star_i=c-\lambda_{N+1-i}$ el c\'alculo es
+id\'entico, porque lo \'unico que consume es que el alfabeto sea estable bajo inversi\'on y tenga
+determinante $-1$ --- que es en lo que se apoyan \S\ref{sec:zero} y \S\ref{sec:ranktwo} al decir
+que la rama sobrevive a cualquier n\'umero de pares rec\'iprocos. Esta es la sombra, en
 funciones de Schur, del enunciado de manual de que una irreducible autoasociada de $O(n)$
 satisface $V\cong V\otimes\det$ y por tanto tiene car\'acter nulo fuera de
 $SO(n)$~\cite[Cap.~XI, \S11.6, \S11.8]{LittlewoodBook}. La otra rama es igual de elemental: la
@@ -517,7 +570,15 @@ irreducible de $\su4$ peso a peso. La forma cerrada elimina esa enumeraci\'on po
 lo hace por una raz\'on que se ve en cuanto uno la escribe.
 
 Los coeficientes de $D$ son los desequilibrios de twist, $\delta(m)=[t^m]D(t)$. Si
-$D=\zeta\,\chi_p\chi_q\chi_r$ entonces $\delta$ es la \emph{convoluci\'on triple} de tres
+$D=\zeta\,\chi_p\chi_q\chi_r$\footnote{\emph{Corregido en la versi\'on~4.} En toda esta secci\'on
+$\zeta$ denota el signo \emph{total} de \eqref{eq:closedform}, que en el perfil equilibrado es el
+$\zeta$ de \eqref{eq:sign} por $\mathrm{sgn}(z)$ y en el de tama\~no tres es \eqref{eq:sign} sin
+m\'as. Las versiones~1--3 usaban el mismo s\'imbolo para las dos cosas, y difieren en $700$ de las
+$3060$ particiones con cuatro partes $\le14$ --- exactamente las equilibradas con $z<0$ ---, de
+modo que quien sustituyera \eqref{eq:sign} en \eqref{eq:moments} obtendr\'ia all\'i el signo
+cambiado en todos los momentos. Nada m\'as cambia en la secci\'on: todos los cocientes de abajo
+dividen $\zeta$ fuera, y el \'unico sitio donde se usa el $M_0$ con signo por s\'i solo,
+\eqref{eq:index}, es justo donde ese signo resulta ser lo importante.} entonces $\delta$ es la \emph{convoluci\'on triple} de tres
 caracteres, es decir, $\delta(m)$ cuenta, con un signo global, las soluciones de
 \begin{equation}\label{eq:convolution}
 m=(p-2i)+(q-2j)+(r-2k),\qquad 0\le i\le p,\ 0\le j\le q,\ 0\le k\le r .
@@ -537,6 +598,59 @@ M_2(\delta)&=\zeta\Big[M_2(\chi_p)(q{+}1)(r{+}1)+(p{+}1)M_2(\chi_q)(r{+}1)
 y $M_4$ an\'alogamente, restituyendo los t\'erminos cruzados por pares
 $6\sum M_2(\chi_\bullet)M_2(\chi_\bullet)(\cdot+1)$. Toda la torre de momentos es polin\'omica
 en los tres enteros $(p,q,r)$.
+
+\paragraph{Qu\'e es $\zeta$, y qu\'e pesa la caja (respondido en la versi\'on~4).} Las
+versiones~1--3 preguntaban qu\'e significa el signo y contestaban que un signo de ordenaci\'on de
+un beta-conjunto que decide el signo de una curvatura f\'isica es ``o una coincidencia de
+contabilidad o la sombra de algo, y no sabemos distinguirlo''. Es lo segundo, y la sombra ocupa
+una l\'inea. El momento cero es $M_0(\delta)=\sum_m\delta(m)=D(1)$, y $D(1)=s_\lambda(1,-1,1,1)$
+es la traza del elemento de orden dos $\sigma=\mathrm{diag}(1,-1,1,1)$ sobre $V_\lambda$ ---
+que es, salvo conjugaci\'on, la matriz de paridad $P_0=\mathrm{diag}(+,+,+,-)$ de la Parte~III.
+Escribiendo $n_\pm$ para las dimensiones de sus dos autoespacios,
+\begin{equation}\label{eq:index}
+\boxed{\;M_0(\delta)\;=\;n_+-n_-\;,\qquad
+(p{+}1)(q{+}1)(r{+}1)\;=\;\bigl|\,n_+-n_-\,\bigr|\;}
+\end{equation}
+de modo que $\zeta$ es el \emph{signo del \'indice de paridad de la involuci\'on del orbifold}, y
+el volumen de la caja es su magnitud (Figura~\ref{fig:index}). Ambas mitades se comprobaron en las $3060$ particiones con
+cuatro partes $\le14$, con el \'indice recalculado por una v\'ia independiente --- contando los
+pesos de $V_\lambda$ por su paridad bajo $\sigma$ y no a trav\'es de la forma cerrada ---: sin
+fallos.
+
+Y la \emph{ordenaci\'on} tampoco es casualidad. El numerador de Weyl es el bialternante; separar
+el beta-conjunto por clase de residuo es separar ese determinante en los bloques donde $\sigma$
+act\'ua por $+1$ y por $-1$; e $\mathrm{inv}$ cuenta exactamente las inversiones de esa
+separaci\'on. Aparece un signo de ordenaci\'on porque ordenar es lo que hace una
+diagonalizaci\'on por bloques, y el signo que lleva es el de la permutaci\'on que la ejecuta.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{fig_index_es.pdf}
+\caption{El criterio de anulaci\'on, le\'ido como enunciado sobre la proyecci\'on del orbifold.
+\textbf{Izquierda:} todas las particiones con cuatro partes $\le12$, por tama\~no frente a su
+\'indice de paridad $n_+-n_-$; la escala es logar\'itmica sim\'etrica, de modo que el \'indice $0$
+es una recta y no un l\'imite. El car\'acter se anula id\'enticamente \emph{exactamente} sobre esa
+recta, y el contenido de la l\'amina es qu\'e particiones la alcanzan: las dos ramas de
+\eqref{eq:zerolocus}, con el tama\~no del marcador dado por cu\'antas particiones de ese tama\~no
+aporta cada una, y ning\'un tercer color en ninguna parte. \textbf{Derecha:} el mismo \'indice
+dibujado como lo que \eqref{eq:index} dice que es. Los tres enteros del $2$-cociente son las
+aristas de una caja cuyo volumen es $|n_+-n_-|$; una representaci\'on de dimensi\'on $10{,}920$
+puede fallar el equilibrio por $12$. Las dos del medio difieren por el twist del determinante
+$\lambda\mapsto\lambda+(1^4)$: misma caja, signo opuesto, misma dimensi\'on --- por eso la caja
+fija la magnitud del \'indice y no su signo. El color lleva la rama a la izquierda y nada a la
+derecha; el signo va escrito.}
+\label{fig:index}
+\end{figure}
+
+La lectura f\'isica se sigue sin m\'as trabajo. $n_+=\tfrac12(\dim V_\lambda+M_0)$ es el n\'umero
+de componentes de $V_\lambda$ pares bajo la paridad del orbifold, $n_-$ el de las impares, y
+$\zeta$ registra por tanto \emph{cu\'al de las dos paridades est\'a m\'as poblada}. Que la
+direcci\'on de la contribuci\'on fermi\'onica a la curvatura de la l\'inea de Wilson siga a ese
+n\'umero no es una coincidencia de contabilidad: es la \'unica cantidad que una proyecci\'on de
+orbifold calcula. Lo que queda genuinamente abierto es la otra mitad de \eqref{eq:index}: el
+volumen de la caja es un \'indice, luego los tres enteros no son s\'olo una compresi\'on --- su
+producto es un invariante de teor\'ia de representaciones, y no sabemos de qu\'e son invariantes
+los factores por separado.
 
 \paragraph{Dado $(p,q,r)$, nada de eso es nuestro.} Hab\'iamos presentado \eqref{eq:moments}
 como una aportaci\'on y no lo es. La sucesi\'on de coeficientes de un producto de caracteres de
@@ -610,6 +724,43 @@ exacta. Controles: sustituir $C_k=k(k+2)$ por $k(k+3)$ vuelve el sistema inconsi
 $r=1,2,3$, y lo mismo ocurre al suprimir la normalizaci\'on por $M_0$.}
 \end{proof}
 
+\paragraph{Y la torre se puede recorrer hacia atr\'as (a\~nadido en la versi\'on~4).} La
+Proposici\'on~\ref{prop:ring} dice que los momentos son funciones de los tres \'indices. El
+rec\'iproco tambi\'en es cierto, y en una forma m\'as fuerte de lo que la pregunta suele admitir:
+bastan \emph{tres} momentos, y la inversi\'on es en forma cerrada.
+
+\begin{proposicion}[la compresi\'on no pierde nada y es invertible]\label{prop:inverse}
+Sea $\delta$ como arriba y sean $e_1,e_2,e_3$ las funciones sim\'etricas elementales de
+$C_p,C_q,C_r$. Entonces
+\begin{equation}\label{eq:inverse}
+\boxed{\;
+e_1=\frac{3M_2}{M_0},\qquad
+e_2=\frac{15}{4}\,\frac{M_4}{M_0}-\frac34 e_1^{\,2}+e_1,\qquad
+e_3=M_0^{\,2}-1-e_1-e_2,\;}
+\end{equation}
+y $\{C_p,C_q,C_r\}$ es el multiconjunto de ra\'ices de $x^3-e_1x^2+e_2x-e_3$, de modo que
+$\{p,q,r\}=\{\sqrt{C+1}-1\}$ se recupera s\'olo de $M_0$, $M_2$ y $M_4$.
+\end{proposicion}
+
+\begin{proof}
+La primera identidad es \eqref{eq:casimir}, y la segunda es \eqref{eq:casimir} otra vez, resuelta
+para $e_2$ tras sustituir $C_p^2+C_q^2+C_r^2=e_1^2-2e_2$. Para la tercera,
+$M_0=\pm(p{+}1)(q{+}1)(r{+}1)$ por \eqref{eq:moments} y $(k+1)^2=k(k+2)+1=C_k+1$, luego el signo
+desaparece en $M_0^{\,2}=\prod_k(C_k+1)=1+e_1+e_2+e_3$. Un multiconjunto de tres n\'umeros son sus
+funciones sim\'etricas elementales, y $k\mapsto C_k$ es inyectiva sobre los enteros no negativos.
+\end{proof}
+
+\noindent Comprobado en las $2925$ ternas con $p,q,r\le24$: la inversi\'on devuelve el
+multiconjunto correcto en todos los casos, sin colisiones. Conviene separar dos cosas. La
+identidad $M_0^2=\prod(C_k+1)$ es lo que hace que basten tres momentos y no cuatro --- $M_0$ no es
+una mera normalizaci\'on, lleva $e_3$ dentro --- y es el mismo $(k+1)^2=C_k+1$ que mueve la
+demostraci\'on de la Proposici\'on~\ref{prop:ring}. Y el enunciado tiene lectura del lado
+f\'isico de la Parte~III: la reducci\'on $\Phi=F\circ Q$ no s\'olo no pierde nada de lo que los
+momentos ven, no pierde nada en absoluto. Los tres enteros y la sucesi\'on observable de momentos
+son dos sistemas de coordenadas para el mismo objeto, y cada uno se calcula del otro en forma
+cerrada. Condicionada a la Observaci\'on~\ref{obs:main}, por supuesto: la inversi\'on hereda su
+estatus, como todo en esta secci\'on.
+
 \paragraph{Por qu\'e esto no es una tautolog\'ia.} Lo ser\'ia si todo polinomio sim\'etrico en
 $(p,q,r)$ fuese un polinomio en los Casimires. No lo es. Ya $p+q+r$ no lo es: poniendo $q=r=0$,
 una identidad polin\'omica $p=P(C_p)$ dar\'ia $\deg_p\text{izq}=2\deg P$ frente a
@@ -651,7 +802,7 @@ perturbar el coeficiente $4/15$ a $3/15$ coincide en $1$ de $216$.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\linewidth]{fig_spectrum3d.pdf}
+\includegraphics[width=\linewidth]{fig_spectrum3d_es.pdf}
 \caption{El espectro de desequilibrios de twist. Cada cresta es el perfil agregado de
 $|\delta(m)|$ sobre todas las particiones con cuatro partes y $|\lambda|\le20$ que comparten un
 valor de $s=p+q+r$, normalizado a masa unidad para que un soporte que se ensancha tenga que
@@ -709,10 +860,10 @@ comprobaci\'on es una aserci\'on en el script que la dibuja, de modo que un cont
 impedir\'ia que la figura llegara a trazarse. Lo que \emph{no} hemos hecho es confrontarlo con
 los espectros f\'isicos, donde es una predicci\'on falsable que cabe en una l\'inea: ninguna carga de
 Wilson por encima de $p+q+r$ porta desequilibrio alguno. \emph{\textquestiondown Y qu\'e
-significa $\zeta$?} Fija a la vez el signo de todos los momentos, luego decide la
-\emph{direcci\'on} de la contribuci\'on fermi\'onica a la curvatura. Que un signo de
-ordenaci\'on de un $\beta$-conjunto decida el signo de una curvatura f\'isica es o una
-coincidencia de contabilidad o la sombra de algo, y no sabemos distinguirlo.
+significa $\zeta$?} Esa pregunta estaba abierta en las versiones~1--3 y queda contestada m\'as
+arriba, en \eqref{eq:index}: es el signo del \'indice de paridad $n_+-n_-$ de la involuci\'on del
+orbifold, y el volumen de la caja es ese \'indice en valor absoluto. Lo que queda de la pregunta
+es la mitad m\'as fina: los tres factores por separado.
 
 Somos cuidadosos con el estatus. \eqref{eq:moments} es consecuencia de la
 Observaci\'on~\ref{obs:main} y hereda su estatus exactamente: verificada, no demostrada. Lo que
@@ -814,9 +965,18 @@ $\mathbb{Q}[a,b]$ en aritm\'etica exacta con SageMath. Merece decirse porque la 
 estaba mal en un borrador anterior: su factor restante es irreducible, pero tiene grado $4$ en
 cada variable y grado total $8$, no grado $4$. Un grado es una afirmaci\'on como cualquier otra.
 
-La \'ultima fila es lo m\'as afilado que podemos decir sobre el rango dos: la regla de
-anulaci\'on all\'i es \emph{estrictamente m\'as fina} que ``ambas clases de paridad
-ocupadas'', que es la regla entera en rango uno. Lo que la gobierne no se ve desde este lado.
+\paragraph{Qu\'e es en realidad la \'ultima fila (corregido en la versi\'on~4).} Las
+versiones~1--3 la le\'ian como lo m\'as afilado que pod\'ia decirse sobre el rango dos: una
+anulaci\'on ``con ambas clases de paridad ocupadas'', luego una regla \emph{estrictamente m\'as
+fina} que la de rango uno, gobernada por algo que ``no se ve desde este lado''. Que las clases de
+paridad est\'en ocupadas excluye la primera de nuestras dos ramas y no dice nada de la segunda.
+Escrita con seis partes, $(3,2,2,1,1,0)$ cumple $\lambda_i+\lambda_{7-i}=3$ para todo $i$: es
+autocomplementaria de anchura impar, y por el argumento de \S\ref{sec:zero} --- que s\'olo
+necesita un alfabeto estable bajo inversi\'on y de determinante $-1$, luego vale para todo $r$ ---
+eso fuerza la anulaci\'on. La fila no es una tercera causa. Es la segunda, en el rango donde este
+art\'iculo hab\'ia dejado de buscarla, y el enunciado honesto sobre el rango dos queda por tanto
+m\'as estrecho y m\'as limpio: sabemos que nuestras dos ramas siguen \emph{forzando} all\'i la
+anulaci\'on, y no sabemos si algo m\'as lo hace.
 
 \paragraph{Flanco abierto: \textquestiondown qu\'e habr\'ia que buscar en rango dos?}
 Sospechamos que el objetivo honesto no es un producto. Si la suma de Laplace se organiza por
@@ -827,9 +987,9 @@ s_\lambda(1,-1,X,\bar X)\;=\;\sum_\eta \epsilon_\eta\,
 \]
 una \emph{suma con signo} sobre selecciones compatibles con el $2$-cociente, que colapsa a un
 solo t\'ermino en rango uno. Bajo esa lectura el cuadrado perfecto en $(2,2,2,0,0,0)$ es una
-recombinaci\'on y no una factorizaci\'on, y el cero extra en $(3,2,2,1,1,0)$ es una cancelaci\'on
-\emph{entre} t\'erminos y no la anulaci\'on de un factor --- lo que explicar\'ia por qu\'e el
-criterio de rango uno deja de controlarlo. No hemos derivado el conjunto de \'indices $\eta$, y
+recombinaci\'on y no una factorizaci\'on, y el cero en $(3,2,2,1,1,0)$ es una cancelaci\'on
+\emph{entre} t\'erminos y no la anulaci\'on de un factor --- coherente con que sea la rama (b),
+que es un enunciado sobre $\lambda$ y no sobre ning\'un t\'ermino concreto. No hemos derivado el conjunto de \'indices $\eta$, y
 hasta que alguien lo haga, la frase ``la factorizaci\'on a veces sobrevive'' debe leerse como
 descripci\'on de resultados y no como enunciado sobre el mecanismo.
 
@@ -863,12 +1023,17 @@ $\beta$-conjunto se separa en clases de residuo, que es el invariante que gobier
 de ra\'ices de la unidad en $t=2$. Si alguna vez se demuestra la forma cerrada por una v\'ia
 que pase por ese programa y no por el bialternante, el signo es donde las dos versiones
 tendr\'an que coincidir, y es por tanto la comprobaci\'on de consistencia m\'as barata
-disponible sobre cualquier demostraci\'on propuesta.
+disponible sobre cualquier demostraci\'on propuesta. \emph{La versi\'on~4 a\~nade qu\'e
+\emph{es} el signo}: por \eqref{eq:index} es el signo del \'indice de paridad $n_+-n_-$ de la
+involuci\'on del orbifold, de modo que una demostraci\'on que produzca otro convenio de signo no
+es meramente incompatible con la nuestra --- discrepa de una traza.
 
 % ===================================================================
 \section{Libro de cuentas}\label{sec:ledger}
 
-\begin{table}[h]
+% [!htbp], y no [h]: con el material de la versi\'on 4 la cola de flotantes se alarg\'o lo
+% bastante como para dejar esta tabla detr\'as de la bibliograf\'ia.
+\begin{table}[!htbp]
 \centering\small
 \begin{tabular}{p{4.0cm}p{5.2cm}p{5.0cm}}
 \toprule
@@ -925,6 +1090,15 @@ nada --- hab\'iamos confundido un teorema cl\'asico con una pregunta abierta\\
 la lectura por Casimires \eqref{eq:casimir} & la f\'ormula es la varianza
 cl\'asica~\cite{Neuschel} & la lectura de $k(k+2)$ como $4j(j+1)$; interpretaci\'on, no
 teorema\\
+\midrule
+\rowcolor{softgrey}
+la inversi\'on \eqref{eq:inverse} \textbf{(v4)} & sus dos ingredientes son \eqref{eq:casimir} y
+$(k+1)^2=C_k+1$ & nuestra, y elemental: que $M_0$ lleve $e_3$ es lo que hace que basten tres
+momentos\\
+\midrule
+la lectura como \'indice \eqref{eq:index} \textbf{(v4)} & la traza de una involuci\'on sobre
+$V_\lambda$ es objeto de manual & nuestra: la identificaci\'on de $\zeta$ con su signo y del
+volumen de la caja con su magnitud\\
 \bottomrule
 \end{tabular}
 \caption{Lo que debe cada elemento. La novedad aqu\'i es una identidad y un cambio de base;
@@ -995,10 +1169,12 @@ La identidad de rango uno s\'i sugiere que las restricciones de caracteres polin
 $GL(2n)$ a la componente no identidad de $O(2n)$ podr\'ian admitir una descripci\'on gobernada
 por el $2$-cociente. Lo enunciamos como direcci\'on y no como principio, y le adjuntamos la
 evidencia en contra: \S\ref{sec:ranktwo} muestra que cualquier enunciado de rango superior
-ser\'a m\'as complicado que una factorizaci\'on, porque en rango dos una partici\'on se anula
-por una raz\'on que nuestro criterio no ve. Bautizar un fen\'omeno sobre la base de un solo
-rango, una identidad no demostrada y un intervalo donde ya falla ser\'ia prematuro, y declinamos
-hacerlo.
+ser\'a m\'as complicado que una factorizaci\'on, pues all\'i el resultado gen\'erico es una suma
+con signos. \emph{La versi\'on~4 retira la segunda pieza de evidencia que dimos aqu\'i}, que en
+rango dos una partici\'on se anula por una raz\'on que nuestro criterio no ve; no es as\'i, y la
+correcci\'on deja la direcci\'on en mejor estado del que la dejamos. Bautizar un fen\'omeno sobre
+la base de un solo rango y una identidad no demostrada seguir\'ia siendo prematuro, y seguimos
+declinando hacerlo.
 
 % ===================================================================
 \section{Conclusi\'on}\label{sec:conclusion}
@@ -1015,6 +1191,19 @@ enunciar hasta que un alfabeto con dos puntos fijos de la inversi\'on la hizo fa
 enunciado est\'a verificado en $7905$ particiones a lo largo de dos intervalos por dos
 implementaciones independientes y no est\'a demostrado. El rango dos queda abierto, y la forma
 de lo que falta all\'i se enuncia con precisi\'on suficiente para atacarlo.
+
+La versi\'on~4 cambia tres cosas y ninguna de ellas es la identidad. La dicotom\'ia de
+\S\ref{sec:zero} est\'a forzada y no s\'olo observada --- dos de los tres factores no pueden
+anularse, de modo que el perfil de tama\~no tres no se anula nunca. La reducci\'on $\Phi=F\circ Q$
+es invertible en forma cerrada (Proposici\'on~\ref{prop:inverse}), lo que sube ``la f\'isica
+s\'olo ve tres enteros'' a ``los tres
+enteros y lo que la f\'isica ve son el mismo dato''; y el signo y el tama\~no de esa reducci\'on
+resultan ser un solo objeto, el \'indice de paridad de la involuci\'on del orbifold, de modo que
+\eqref{eq:index} contesta una pregunta que las versiones~1--3 plantearon y no supieron zanjar.
+Y la partici\'on de rango dos que las
+versiones~1--3 ofrec\'ian como tercera causa de anulaci\'on queda retirada: es la segunda causa
+escrita con seis partes, y la segunda causa vale en todo rango por las mismas dos l\'ineas que la
+dan aqu\'i. Lo abierto en rango dos es ya s\'olo el rec\'iproco.
 
 % ===================================================================
 \begin{thebibliography}{99}

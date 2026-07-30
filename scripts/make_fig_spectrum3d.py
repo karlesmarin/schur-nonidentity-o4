@@ -12,6 +12,7 @@ convolution's shape, not merely its low moments.
 
 Nothing is hand-placed; the coefficients are expanded exactly from eq. (6) in integer arithmetic.
 """
+import sys
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -20,6 +21,10 @@ from mpl_toolkits.mplot3d import Axes3D  # noqa: F401  (registers the 3d project
 import numpy as np
 from itertools import product
 from collections import defaultdict
+
+ES = "--es" in sys.argv           # Spanish edition of the plate; a lookup, not a source rewrite
+T = lambda en, es: es if ES else en
+SUF = "_es" if ES else ""
 
 HDR = "#1F4E79"
 NPARTS, MAXN = 4, 20
@@ -107,10 +112,11 @@ def fig(path):
     ax.set_xlim(-S - 1, S + 1)
     ax.set_ylim(S + 1, min(ss) - 1)   # small s at the back
     ax.set_zlim(0, top * 1.05)
-    ax.set_xlabel(r"Wilson charge $m$", labelpad=8)
+    ax.set_xlabel(T(r"Wilson charge $m$", r"carga de Wilson $m$"), labelpad=8)
     ax.set_ylabel(r"$s=p+q+r$", labelpad=8)
-    ax.set_zlabel(r"$|\delta(m)|$  (unit mass)", labelpad=10)
-    ax.set_title("The spectrum of twist imbalances, stratified by the $2$-quotient",
+    ax.set_zlabel(T(r"$|\delta(m)|$  (unit mass)", r"$|\delta(m)|$  (masa unidad)"), labelpad=10)
+    ax.set_title(T("The spectrum of twist imbalances, stratified by the $2$-quotient",
+                   "El espectro de desequilibrios de twist, estratificado por el $2$-cociente"),
                  color=HDR, pad=6)
     ax.view_init(elev=24, azim=-118)
     ax.set_box_aspect((1.5, 1.15, .75))
@@ -127,4 +133,4 @@ def fig(path):
 
 
 if __name__ == "__main__":
-    fig("paper/fig_spectrum3d.pdf")
+    fig("paper/fig_spectrum3d%s.pdf" % SUF)

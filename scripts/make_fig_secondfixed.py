@@ -11,13 +11,22 @@ fig_families   where our alphabet sits in the Ciucu-Krattenthaler / Ayyer-Behren
                what changes at the step that was never taken.
 
 Both are regenerated from scratch; nothing is hand-placed.
+
+Run with --es for the Spanish edition of the plates (fig_*_es.pdf).  The switch is a lookup, not a
+post-hoc replacement of the source: a missing translation is then a visible English string in the
+plate rather than a substitution that silently did nothing.
 """
+import sys
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Patch
 import numpy as np
 from itertools import product
+
+ES = "--es" in sys.argv
+T = lambda en, es: es if ES else en
+SUF = "_es" if ES else ""
 
 HDR = "#1F4E79"
 BLUE = "#3B7DD8"
@@ -40,7 +49,7 @@ def branch(lam):
     return 0
 
 
-def fig_zerolocus(path, M=14):
+def fig_zerolocus(path, M=16):     # the range the text quotes its 560 = 420 + 140 over
     """Plot by (|lambda|, lambda_1): each cell says whether SOME partition of that shape
     vanishes, and by which branch. Cells with both are split."""
     cells = {}
@@ -69,10 +78,14 @@ def fig_zerolocus(path, M=14):
     ax.set_ylim(min(l1s) - 1, max(l1s) + 1)
     ax.set_xlabel(r"$|\lambda|$")
     ax.set_ylabel(r"$\lambda_1$")
-    ax.set_title("Where the character vanishes, and by which branch", color=HDR, fontsize=11)
-    ax.legend(handles=[Patch(fc=BLUE, label=r"alternating $\beta$-parity"),
-                       Patch(fc=ORANGE, label=r"self-complementary, $c$ odd"),
-                       Patch(fc="0.6", label="both occur at this $(|\\lambda|,\\lambda_1)$")],
+    ax.set_title(T("Where the character vanishes, and by which branch",
+                   "Dónde se anula el carácter, y por qué rama"), color=HDR, fontsize=11)
+    ax.legend(handles=[Patch(fc=BLUE, label=T(r"alternating $\beta$-parity",
+                                              r"paridad $\beta$ alternante")),
+                       Patch(fc=ORANGE, label=T(r"self-complementary, $c$ odd",
+                                                r"autocomplementaria, $c$ impar")),
+                       Patch(fc="0.6", label=T("both occur at this $(|\\lambda|,\\lambda_1)$",
+                                               "ambas ocurren en este $(|\\lambda|,\\lambda_1)$"))],
               loc="upper left", fontsize=8, framealpha=.95)
     ax.set_axisbelow(True)
     ax.grid(color="0.9", lw=.5)
@@ -87,16 +100,20 @@ def fig_families(path):
     fig, ax = plt.subplots(figsize=(7.8, 3.5))
     ax.axis("off")
 
+    # en-dashes, not the LaTeX "--" digraph: this is matplotlib text, not TeX
     rows = [
-        (r"$(X,\bar X)$", "$+1$", "none", "Ciucu--Krattenthaler 2008", True),
-        (r"$(X,\bar X,1)$", "$+1$", r"$+1$: constant row", "Ayyer--Behrend 2018", True),
-        (r"$(X,\bar X,1,-1)$", "$-1$", r"$-1$: parity row", "this paper", False),
+        (r"$(X,\bar X)$", "$+1$", T("none", "ninguno"), "Ciucu–Krattenthaler 2008", True),
+        (r"$(X,\bar X,1)$", "$+1$", T(r"$+1$: constant row", r"$+1$: fila constante"),
+         "Ayyer–Behrend 2018", True),
+        (r"$(X,\bar X,1,-1)$", "$-1$", T(r"$-1$: parity row", r"$-1$: fila de paridad"),
+         T("this paper", "este artículo"), False),
     ]
     y = 2.4
-    ax.text(0.02, y + .75, "alphabet", fontsize=9, color=HDR, weight="bold")
+    ax.text(0.02, y + .75, T("alphabet", "alfabeto"), fontsize=9, color=HDR, weight="bold")
     ax.text(0.30, y + .75, r"$\det$", fontsize=9, color=HDR, weight="bold")
-    ax.text(0.42, y + .75, "inversion-fixed points", fontsize=9, color=HDR, weight="bold")
-    ax.text(0.78, y + .75, "who did it", fontsize=9, color=HDR, weight="bold")
+    ax.text(0.42, y + .75, T("inversion-fixed points", "puntos fijos de la inversión"),
+            fontsize=9, color=HDR, weight="bold")
+    ax.text(0.73, y + .75, T("who did it", "quién lo hizo"), fontsize=9, color=HDR, weight="bold")
     for alph, det, fixed, who, done in rows:
         fc = GREY if done else "#FDEDE3"
         ax.add_patch(plt.Rectangle((0.0, y - .28), 1.0, .66, fc=fc, ec="0.75", lw=.7,
@@ -105,13 +122,15 @@ def fig_families(path):
         ax.text(0.30, y, det, fontsize=10, va="center",
                 color="0.25" if done else "#B22222", weight="normal" if done else "bold")
         ax.text(0.42, y, fixed, fontsize=9, va="center")
-        ax.text(0.78, y, who, fontsize=9, va="center",
+        ax.text(0.73, y, who, fontsize=9, va="center",
                 style="normal" if done else "italic",
                 color="0.25" if done else "#B22222")
         y -= .95
     ax.text(0.02, y + .25,
-            "the block identity needs every fixed point to give a CONSTANT row;\n"
-            r"$-1$ gives $((-1)^{\mu_j})_j$, and the triangularisation stops",
+            T("the block identity needs every fixed point to give a CONSTANT row;\n"
+              r"$-1$ gives $((-1)^{\mu_j})_j$, and the triangularisation stops",
+              "la identidad de bloques exige que todo punto fijo dé una fila CONSTANTE;\n"
+              r"$-1$ da $((-1)^{\mu_j})_j$, y la triangularización se detiene"),
             fontsize=8.5, color="#B22222", va="top")
     ax.set_xlim(0, 1.02)
     ax.set_ylim(y - .1, 3.5)
@@ -121,7 +140,7 @@ def fig_families(path):
 
 
 if __name__ == "__main__":
-    n = fig_zerolocus("paper/fig_zerolocus.pdf")
-    print("fig_zerolocus.pdf   %d occupied cells" % n)
-    fig_families("paper/fig_families.pdf")
-    print("fig_families.pdf    written")
+    n = fig_zerolocus("paper/fig_zerolocus%s.pdf" % SUF)
+    print("fig_zerolocus%s.pdf   %d occupied cells" % (SUF, n))
+    fig_families("paper/fig_families%s.pdf" % SUF)
+    print("fig_families%s.pdf    written" % SUF)

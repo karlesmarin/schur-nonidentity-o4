@@ -2,6 +2,12 @@
 % Part IV. The second inversion-fixed point: a closed form for the Schur function at the generic
 % element of the non-identity component of O(2n), of which Part III's class is the zero
 % locus. Question-threaded narrative; honest about scope throughout. Build: pdflatex x2.
+% v4 (2026-07-30): RETRACTS the rank-two "third cause of vanishing" of v1-v3 -- that partition is
+% branch (b) written in six parts, and branch (b) is folklore-sufficient at every rank by the same
+% two lines; sharpens the dichotomy (factors one and two can never vanish, so the size-three
+% profile never vanishes); adds Proposition 3, the moment tower is invertible in closed form; and
+% states the counts by mechanism. Audit + regenerated numbers: PARTIV_V4_AUDIT.md,
+% verify_v4_audit.py, verify_v4_inverse.py, outputs archived under paper/anc_iv/outputs/.
 \documentclass[11pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amssymb,amsthm}
@@ -80,7 +86,13 @@ mechanism is theirs and we credit it here; what this paper contributes is the ex
 free~$t$. What we take to be the result of this
 paper, however, is neither the identity nor that reading, but what they make possible:
 $\Phi=F\circ Q$, the physical functional factoring through the $2$-quotient. The Schur identity
-is the door; the reduction is what is behind it.
+is the door; the reduction is what is behind it. \emph{Added in version~4:} that reduction is
+invertible --- three moments return the three integers in closed form, so it loses nothing at all
+rather than nothing the moments can see --- and both its sign and its size are one object, the
+parity index $n_+-n_-$ of the orbifold involution on $V_\lambda$, whose sign is the $\zeta$ of the
+identity and whose magnitude is the volume of the box. One claim of versions~1--3 is withdrawn: the
+rank-two partition offered there as a third cause of vanishing is the second cause, written with
+the six parts that rank two requires.
 \end{abstract}
 
 % ===================================================================
@@ -122,7 +134,7 @@ yes, and by something stronger --- \S\ref{sec:closedform}\\
 \textbf{Q2} what is $D$ when non-zero? &
 $\pm$ three $SU(2)$ characters off the $2$-quotient --- \eqref{eq:closedform}\\
 \textbf{Q3} why exactly two branches? &
-a product of three characters has exactly two ways to vanish --- \S\ref{sec:zero}\\
+two of the three factors can never vanish --- \S\ref{sec:zero}\\
 \rowcolor{softgrey}
 \textbf{Q4} structure in the moments? &
 $\delta$ is a threefold convolution; every moment is polynomial --- \S\ref{sec:moments}\\
@@ -269,7 +281,7 @@ and let $\chi_k(t)=t^k+t^{k-2}+\dots+t^{-k}$, with $\chi_{-1}=0$.
 \begin{observation}[verified, not proved]\label{obs:main}
 For every partition $\lambda$ with at most four rows,
 \begin{equation}\label{eq:closedform}
-\boxed{\;
+\boxed{
 s_\lambda(1,-1,t,t^{-1})=
 \begin{cases}
 0, & E=\varnothing\ \text{or}\ O=\varnothing,\\[3pt]
@@ -277,10 +289,10 @@ s_\lambda(1,-1,t,t^{-1})=
 \chi_{\lambda^{(0)}_1-\lambda^{(0)}_2}\;
 \chi_{\lambda^{(1)}_1-\lambda^{(1)}_2}\;
 \chi_{|z|-1},
-& |E|=|O|=2,\quad z=|\lambda^{(0)}|-|\lambda^{(1)}|-1,\\[3pt]
+& |E|=|O|=2,\; z=|\lambda^{(0)}|-|\lambda^{(1)}|-1,\\[3pt]
 \zeta\;\chi_{\nu_1-\nu_2}\;\chi_{\nu_2-\nu_3}\;\chi_{\nu_1-\nu_3+1},
 & |E|=3\ \text{or}\ |O|=3,
-\end{cases}\;}
+\end{cases}}
 \end{equation}
 where $\nu$ denotes the three-part quotient component. In the middle case $z=0$ gives zero as
 well, through $\chi_{-1}=0$.
@@ -373,7 +385,8 @@ Prop.~\ref{cor:Z} (via Part~III); both folklore sufficiencies\\
 \eqref{eq:moments}, \eqref{eq:deltaclosed}, log-concavity\\
 \rowcolor{softgrey}
 \textbf{Open} & suspected, with a stated test &
-the third factor's meaning, rank two, the sign's origin\\
+the third factor's meaning, rank two \emph{(the sign's origin left this row in v4:
+\eqref{eq:index})}\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -415,7 +428,11 @@ mutually exclusive as written.
 \paragraph{Attribution added in version~3.}
 The first branch is not ours. Setting $t=1$ sends our
 alphabet to the order-2 element $(1,-1,1,1)$, and our rigidity lemma ($D\equiv0$ exactly when
-$D(1)=0$) carries the criterion there and back. Karmakar~\cite{Karmakar}, Thm.~1A, states precisely
+$D(1)=0$) carries the criterion there and back.\footnote{\emph{Version~4:} that lemma is used here
+at rank one and claimed nowhere else. At rank one it is exact --- $D\equiv0\iff D(1)=0$ on all
+$3060$ partitions with four parts $\le14$, no violations --- and an order-2 evaluation is in
+general only a filter that never misses a zero, so nothing in this paper should be read as
+asserting it past one reciprocal pair.} Karmakar~\cite{Karmakar}, Thm.~1A, states precisely
 that criterion for $\mathrm{GL}(n,\mathbb{C})$ at $C_{n-k,k}$: his $\eta_i(\lambda)$ is our parity
 split of $\lambda+\rho$, and his normalisation ``$\#\eta_0\ge\#\eta_1$ after twisting by the
 determinant character'' is our determinant twist. His Thm.~1B goes further and factorises the value
@@ -427,8 +444,14 @@ this shape --- vanishing when one centraliser dimension exceeds another, and a c
 \emph{dimension} when they agree. Our $t=1$ point is an instance of it. The deformation off that
 point is not: their programme has no free parameter, and no non-identity component. (We checked, and
 record the negative: $s_\lambda(1,-1,t,t^{-1})$ is \emph{not} $\pm$ a constant times
-$s_{\lambda^{(0)}}(1,t,t^{-1})$ --- $0$ of $105$ cases --- so the free-$t$ object is not simply the
-character of the centraliser representation whose dimension Karmakar's Thm.~1B computes.)
+$s_{\lambda^{(0)}}(1,t,t^{-1})$ --- $0$ of the $109$ non-trivial cases with four parts $\le5$ ---
+so the free-$t$ object is not simply the
+character of the centraliser representation whose dimension Karmakar's Thm.~1B
+computes.\footnote{\emph{Version~4:} versions~1--3 reported this as ``$0$ of $105$ cases'' without
+saying over which range, and no range we can now reconstruct produces $105$; the count is restated
+with the range it was re-run on. The negative itself is unchanged, and slightly stronger than
+printed: the only proportional case in any range tried is the empty partition, where both sides are
+the constant~$1$.})
 
 
 \paragraph{Why this is a proposition and not a corollary.} The statement does not depend on
@@ -441,28 +464,50 @@ observation; it only makes the derivation conditional, and it is worth saying wh
 logic runs. A reader who rejects \eqref{eq:closedform} keeps Proposition~\ref{cor:Z} entire and
 loses only the explanation.
 
-\paragraph{Open flank: is the dichotomy forced?} We can say that there is no third branch; we
-cannot say why there could not be. In the closed form the two branches are visibly different
-species --- one kills the whole product by emptying a parity class, the other kills a single
-factor by degenerating its index --- and a reader may reasonably ask whether that is a genuine
-dichotomy or an artefact of rank one. Two probes would settle it. \emph{Is there a duality
-exchanging the branches?} Both are invariant under conjugation composed with complementation in
-a suitable rectangle, which is suggestive and which we have not pursued. \emph{And does a third
-branch appear at rank two?} It does: \S\ref{sec:ranktwo} exhibits a partition that vanishes with
-both parity classes occupied, which is neither of our two causes. So the dichotomy is a
-rank-one statement, and calling it a structural fact would be an overclaim.
+\paragraph{Why the dichotomy is forced --- and a correction to versions~1--3.} Those versions
+said that there is no third branch but that we could not say why there could not be, and closed
+with: \emph{``the dichotomy is a rank-one statement, and calling it a structural fact would be an
+overclaim.''} The first half has a two-line answer that was available to us and we missed; the
+second half is wrong, and wrong in the direction that is easier to overlook --- we under-claimed,
+and then justified the under-claim with a counterexample that is not one.
+
+\emph{Why two and not three.} Because two of the three factors of \eqref{eq:closedform} can never
+vanish. A factor $\chi_k$ is zero only at $k=-1$, and the first two indices are
+$\lambda^{(0)}_1-\lambda^{(0)}_2$ and $\lambda^{(1)}_1-\lambda^{(1)}_2$, differences of consecutive
+parts of a partition, hence non-negative; in the size-three profile the three indices are
+$\nu_1-\nu_2$, $\nu_2-\nu_3$ and $\nu_1-\nu_3+1$, the first two non-negative and the third
+strictly positive. So the only index that can degenerate is the cross term of the balanced
+profile, and the only other route to zero is an empty parity class. Two branches, and no room for
+a third. It follows in the same line that \textbf{the size-three profile never vanishes} --- a
+statement versions~1--3 could have made from their own formula and did not.
+
+\emph{And the dichotomy is not a rank-one artefact.} Versions~1--3 offered
+$\lambda=(3,2,2,1,1,0)$ at rank two as a partition vanishing ``with both parity classes occupied,
+which is neither of our two causes''. Occupied parity classes rule out the first cause only.
+Written with the six parts that rank two requires, that partition satisfies
+$\lambda_i+\lambda_{7-i}=3$ for every $i$: it is self-complementary of odd width, which is the
+second cause exactly. Nor is the second cause confined to rank one. The folklore argument recorded
+below uses only that the alphabet is stable under inversion and has determinant $-1$, and
+$(1,-1,z_1,z_1^{-1},\dots,z_r,z_r^{-1})$ is such an alphabet for every $r$; so
+self-complementarity of odd width forces vanishing at every number of reciprocal pairs, our own
+example included. What we cannot settle from here is the converse --- whether anything
+\emph{else} vanishes past rank one --- and \S\ref{sec:ranktwo} says so.
 
 The decomposition is exact and leaves nothing over. Of the $560$ vanishing partitions in the
-$\text{parts}\le16$ range, $420$ fall in the first branch and $140$ in the second, and none
-outside the two (Figure~\ref{fig:zerolocus}).
+$\text{parts}\le16$ range, $420$ are killed by an empty parity class and the remaining $140$ by a
+degenerate cross-index, and none by anything else (Figure~\ref{fig:zerolocus}). That split is by
+\emph{mechanism}, which is disjoint; the two $\lambda$-shorthands boxed above are not, and split
+the same $560$ as $420$ and $240$ with $100$ partitions satisfying both.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.86\textwidth]{fig_zerolocus.pdf}
-\caption{The zero locus, plotted by size and first part. Blue cells contain a partition killed
+\caption{The zero locus over the $\text{parts}\le16$ range --- the same range as the $560=420+140$
+above, stated here because a plate drawn over a different range is a different plate --- by size
+and first part. Blue cells contain a partition killed
 by alternating $\beta$-parity, orange ones a partition killed by self-complementarity with odd
-constant, split cells both. The content of the plate is what is \emph{not} in it: there is no
-third colour. Every partition at which $s_\lambda(1,-1,t,t^{-1})$ vanishes is accounted for by
+constant, split cells both; $156$ cells are occupied. The content of the plate is what is
+\emph{not} in it: there is no third colour. Every partition at which $s_\lambda(1,-1,t,t^{-1})$ vanishes is accounted for by
 one of the two branches, which is what it means for Proposition~\ref{cor:Z} to be exhaustive
 rather than merely correct.}
 \label{fig:zerolocus}
@@ -473,7 +518,11 @@ self-complementarity with odd constant forces vanishing is two lines and is not 
 $\lambda^\star_i=c-\lambda_{5-i}$ one has $s_{\lambda^\star}(x)=(x_1\cdots x_4)^c
 s_\lambda(x^{-1})$; our alphabet is inversion-stable, so $s_\lambda(p^{-1})=s_\lambda(p)$; and
 $x_1\cdots x_4=\det=-1$. If $\lambda^\star=\lambda$ then $s_\lambda(p)=(-1)^cs_\lambda(p)$, and
-$c$ odd forces zero. This is the Schur-function shadow of the textbook statement that a
+$c$ odd forces zero. Nothing in those two lines uses four letters: with $N=2r+2$ of them and
+$\lambda^\star_i=c-\lambda_{N+1-i}$ the computation is identical, because the only properties
+consumed are that the alphabet is inversion-stable and that its determinant is $-1$ --- which is
+what \S\ref{sec:zero} and \S\ref{sec:ranktwo} rely on when they say the branch survives every
+number of reciprocal pairs. This is the Schur-function shadow of the textbook statement that a
 self-associate $O(n)$ irreducible satisfies $V\cong V\otimes\det$ and therefore has vanishing
 character off $SO(n)$~\cite[Ch.~XI, \S11.6, \S11.8]{LittlewoodBook}. The other branch is
 equally elementary: equal parity of all beta-numbers makes the rows of the bialternant at $x=1$
@@ -495,7 +544,15 @@ closed form removes that enumeration entirely, and it does so for a reason that 
 moment one writes it down.
 
 The coefficients of $D$ are the twist imbalances, $\delta(m)=[t^m]D(t)$. If
-$D=\zeta\,\chi_p\chi_q\chi_r$ then $\delta$ is the \emph{threefold convolution} of three
+$D=\zeta\,\chi_p\chi_q\chi_r$\footnote{\emph{Corrected in version~4.} Throughout this section $\zeta$ denotes the \emph{total}
+sign of \eqref{eq:closedform}, which in the balanced profile is the $\zeta$ of \eqref{eq:sign}
+times $\mathrm{sgn}(z)$ and in the size-three profile is \eqref{eq:sign} itself. Versions~1--3
+used the one symbol for both, and the two differ on $700$ of the $3060$ partitions with four
+parts $\le14$ --- exactly the balanced ones with $z<0$ --- so a reader substituting
+\eqref{eq:sign} into \eqref{eq:moments} would get the sign of every moment wrong there. Nothing
+else in the section changes: every ratio below divides $\zeta$ out, and the one place where the
+signed $M_0$ is used on its own, \eqref{eq:index}, is where that sign turns out to be the point.}
+then $\delta$ is the \emph{threefold convolution} of three
 characters, i.e.\ $\delta(m)$ counts, with an overall sign, the solutions of
 \begin{equation}\label{eq:convolution}
 m=(p-2i)+(q-2j)+(r-2k),\qquad 0\le i\le p,\ 0\le j\le q,\ 0\le k\le r .
@@ -513,6 +570,55 @@ M_2(\delta)&=\zeta\Big[M_2(\chi_p)(q{+}1)(r{+}1)+(p{+}1)M_2(\chi_q)(r{+}1)
 \end{equation}
 and $M_4$ likewise, with the pair cross-terms $6\sum M_2(\chi_\bullet)M_2(\chi_\bullet)(\cdot+1)$
 restored. The whole moment tower is polynomial in the three integers $(p,q,r)$.
+
+\paragraph{What $\zeta$ is, and what the box weighs (answered in version~4).} Versions~1--3 asked
+what the sign means and answered that a sorting sign of a beta-set deciding the sign of a physical
+curvature is ``either a coincidence of bookkeeping or the shadow of something, and we cannot tell
+which''. It is the second, and the shadow is one line long. The zeroth moment is
+$M_0(\delta)=\sum_m\delta(m)=D(1)$, and $D(1)=s_\lambda(1,-1,1,1)$ is the trace of the order-two
+element $\sigma=\mathrm{diag}(1,-1,1,1)$ on $V_\lambda$ --- which is, up to conjugacy, Part~III's
+parity matrix $P_0=\mathrm{diag}(+,+,+,-)$. Writing $n_\pm$ for the dimensions of its two
+eigenspaces,
+\begin{equation}\label{eq:index}
+\boxed{\;M_0(\delta)\;=\;n_+-n_-\;,\qquad
+(p{+}1)(q{+}1)(r{+}1)\;=\;\bigl|\,n_+-n_-\,\bigr|\;}
+\end{equation}
+so $\zeta$ is the \emph{sign of the parity index of the orbifold involution}, and the volume of the
+box is its magnitude (Figure~\ref{fig:index}). Both halves were checked on all $3060$ partitions with four parts $\le14$,
+with the index recomputed independently by counting weights of $V_\lambda$ by their $\sigma$-parity
+rather than through the closed form: no failures.
+
+Nor is the \emph{sorting} a coincidence. The Weyl numerator is the bialternant; splitting the
+beta-set by residue class is the splitting of that determinant into the blocks on which $\sigma$
+acts by $+1$ and by $-1$; and $\mathrm{inv}$ counts the inversions of exactly that split. A sorting
+sign appears because sorting is what block-diagonalisation does, and the sign it carries is the
+sign of the permutation that performs it.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{fig_index.pdf}
+\caption{The vanishing criterion, read as a statement about the orbifold projection. \textbf{Left:}
+every partition with four parts $\le12$, plotted by size against its parity index $n_+-n_-$; the
+scale is symmetric-logarithmic, so index $0$ is a line and not a limit. The character vanishes
+identically \emph{exactly} on that line, and the plate's content is which partitions reach it ---
+the two branches of \eqref{eq:zerolocus}, sized by how many partitions of that size they carry, and
+no third colour anywhere. \textbf{Right:} the same index drawn as what \eqref{eq:index} says it is.
+The three integers of the $2$-quotient are the edges of a box whose volume is $|n_+-n_-|$; a
+representation of dimension $10{,}920$ can miss balance by $12$. The middle two differ by the
+determinant twist $\lambda\mapsto\lambda+(1^4)$: same box, opposite sign, same dimension --- which
+is why the box fixes the magnitude of the index and not its sign. Colour carries the branch on the
+left and nothing on the right; the sign is written out.}
+\label{fig:index}
+\end{figure}
+
+The physical reading follows without further work. $n_+=\tfrac12(\dim V_\lambda+M_0)$ is the number
+of components of $V_\lambda$ even under the orbifold parity, $n_-$ the number that are odd, and
+$\zeta$ therefore records \emph{which parity is the more populated}. That the direction of the
+fermionic contribution to the Wilson-line curvature should follow that number is not a coincidence
+of bookkeeping; it is the one quantity an orbifold projection computes. What remains genuinely open
+is the other half of \eqref{eq:index}: the box volume is an index, so the three integers are not
+merely a compression --- their product is a representation-theoretic invariant, and we do not know
+what the individual factors are invariants \emph{of}.
 
 \paragraph{Given $(p,q,r)$, none of that is ours.} We had presented \eqref{eq:moments} as a
 contribution and it is not one. The coefficient sequence of a product of $sl_2$ characters is
@@ -581,6 +687,43 @@ for $r=1,\dots,8$ on all $729$ triples with $p,q,r\le8$ by solving the over-dete
 in exact rational arithmetic. Controls: replacing $C_k=k(k+2)$ by $k(k+3)$ makes the system
 inconsistent at $r=1,2,3$, and so does dropping the normalisation by $M_0$.}
 \end{proof}
+
+\paragraph{And the tower can be run backwards (added in version~4).} Proposition~\ref{prop:ring}
+says the moments are functions of the three indices. The converse is also true, and in a stronger
+form than the question usually admits: \emph{three} moments suffice, and the inversion is in closed
+form.
+
+\begin{proposition}[the compression is lossless and invertible]\label{prop:inverse}
+Let $\delta$ be as above and let $e_1,e_2,e_3$ be the elementary symmetric functions of
+$C_p,C_q,C_r$. Then
+\begin{equation}\label{eq:inverse}
+\boxed{\;
+e_1=\frac{3M_2}{M_0},\qquad
+e_2=\frac{15}{4}\,\frac{M_4}{M_0}-\frac34 e_1^{\,2}+e_1,\qquad
+e_3=M_0^{\,2}-1-e_1-e_2,\;}
+\end{equation}
+and $\{C_p,C_q,C_r\}$ is the root multiset of $x^3-e_1x^2+e_2x-e_3$, so that
+$\{p,q,r\}=\{\sqrt{C+1}-1\}$ is recovered from $M_0$, $M_2$ and $M_4$ alone.
+\end{proposition}
+
+\begin{proof}
+The first identity is \eqref{eq:casimir} and the second is \eqref{eq:casimir} again, solved for
+$e_2$ after substituting $C_p^2+C_q^2+C_r^2=e_1^2-2e_2$. For the third,
+$M_0=\pm(p{+}1)(q{+}1)(r{+}1)$ by \eqref{eq:moments} and $(k+1)^2=k(k+2)+1=C_k+1$, so the sign
+drops out of $M_0^{\,2}=\prod_k(C_k+1)=1+e_1+e_2+e_3$. A multiset of three numbers is its
+elementary symmetric functions, and $k\mapsto C_k$ is injective on non-negative integers.
+\end{proof}
+
+\noindent Checked on all $2925$ triples with $p,q,r\le24$: the inversion returns the correct
+multiset in every case, with no collisions. Two things are worth separating. The identity
+$M_0^2=\prod(C_k+1)$ is what makes three moments enough rather than four --- $M_0$ is not merely a
+normalisation, it carries $e_3$ --- and it is the same $(k+1)^2=C_k+1$ that drives the proof of
+Proposition~\ref{prop:ring}. And the statement has a reading on the physics side of Part~III: the
+reduction $\Phi=F\circ Q$ does not merely lose nothing that the moments can see, it loses nothing
+at all. The three integers and the observable moment sequence are two coordinate systems for the
+same object, and either is computable from the other in closed form. Conditionally on
+Observation~\ref{obs:main}, of course: the inversion inherits its standing, as everything in this
+section does.
 
 \paragraph{Why this is not a tautology.} It would be, if every symmetric polynomial in
 $(p,q,r)$ were a polynomial in the Casimirs. It is not. Already $p+q+r$ is not: setting
@@ -673,10 +816,10 @@ off the $2$-quotient. Combinatorially that is settled --- Figure~\ref{fig:spectr
 on every stratum up to $s=20$ and the check is an assertion in the plotting script, so a
 counterexample would stop the figure from being drawn at all. What we have \emph{not} done is
 confront it with the physical spectra, where it is a one-line falsifiable prediction: no Wilson
-charge above $p+q+r$ carries any imbalance. \emph{And what does $\zeta$ mean?} It fixes the sign of every moment at
-once, so it decides the \emph{direction} of the fermionic contribution to the curvature. A
-sorting sign of a beta-set deciding the sign of a physical curvature is either a coincidence of
-bookkeeping or the shadow of something, and we cannot tell which.
+charge above $p+q+r$ carries any imbalance. \emph{And what does $\zeta$ mean?} That question was
+open in versions~1--3 and is answered above, at \eqref{eq:index}: it is the sign of the parity
+index $n_+-n_-$ of the orbifold involution, and the box volume is that index in absolute value.
+What is left of the question is the finer half --- the three factors separately.
 
 We are careful about the status. \eqref{eq:moments} is a consequence of
 Observation~\ref{obs:main} and inherits its standing exactly: verified, not proved. What is
@@ -773,9 +916,17 @@ in exact arithmetic in SageMath. That is worth saying because the third row was 
 earlier draft: its remaining factor is irreducible, but it has degree $4$ in each variable and
 total degree $8$, not degree $4$. A degree is a claim like any other.
 
-The last row is the sharpest statement we can make about rank two: the vanishing rule there is
-\emph{strictly finer} than ``both parity classes occupied'', which is the whole rule at rank
-one. Whatever governs it is not visible from this side.
+\paragraph{What the last row really is (corrected in version~4).} Versions~1--3 read it as the
+sharpest statement available about rank two: a vanishing ``with both parity classes occupied'',
+hence a rule \emph{strictly finer} than the rank-one one, governed by something ``not visible from
+this side''. Occupied parity classes exclude the first of our two branches and say nothing about
+the second. Written with six parts, $(3,2,2,1,1,0)$ has $\lambda_i+\lambda_{7-i}=3$ for every $i$:
+it is self-complementary of odd width, and by the argument of \S\ref{sec:zero} --- which needs only
+an inversion-stable alphabet of determinant $-1$, so it holds at every $r$ --- that forces the
+vanishing. The row is not a third cause. It is the second cause, in the range where this paper had
+stopped looking for it, and the honest statement about rank two is therefore narrower and cleaner:
+we know that both of our branches still \emph{force} vanishing there, and we do not know whether
+anything else does.
 
 \paragraph{Open flank: what should one be looking for at rank two?} We suspect the honest target
 is not a product. If the Laplace sum is organised by which columns survive, the natural shape is
@@ -785,9 +936,9 @@ s_\lambda(1,-1,X,\bar X)\;=\;\sum_\eta \epsilon_\eta\,
 \]
 a \emph{signed sum} over selections compatible with the $2$-quotient, collapsing to a single
 term at rank one. On that reading the perfect square at $(2,2,2,0,0,0)$ is a recombination
-rather than a factorisation, and the extra zero at $(3,2,2,1,1,0)$ is a cancellation
-\emph{between} terms rather than the vanishing of a factor --- which would explain why the
-rank-one criterion stops controlling it. We have not derived the index set $\eta$, and until
+rather than a factorisation, and the zero at $(3,2,2,1,1,0)$ is a cancellation \emph{between}
+terms rather than the vanishing of a factor --- consistent with its being branch (b), which is a
+statement about $\lambda$ and not about any one term. We have not derived the index set $\eta$, and until
 someone does, the phrase ``the factorisation sometimes survives'' should be read as a
 description of outputs and not as a statement about mechanism.
 
@@ -818,12 +969,17 @@ $\lambda$; $\mathrm{sgn}(\sigma_\lambda)$ says it cares about the order in which
 splits into residue classes, which is the invariant governing the root-of-unity programme at
 $t=2$. If the closed form is ever proved by a route passing through that programme rather than
 through the bialternant, the sign is where the two accounts will have to agree, and it is
-therefore the cheapest consistency check available on any proposed proof.
+therefore the cheapest consistency check available on any proposed proof. \emph{Version~4 adds what
+the sign \emph{is}}: by \eqref{eq:index} it is the sign of the parity index $n_+-n_-$ of the
+orbifold involution, so a proof that produces a different sign convention is not merely
+inconsistent with ours --- it disagrees with a trace.
 
 % ===================================================================
 \section{Ledger}\label{sec:ledger}
 
-\begin{table}[h]
+% [!htbp], not [h]: with the version-4 material the queue got long enough to strand this table
+% past the bibliography, three pages from the section it belongs to.
+\begin{table}[!htbp]
 \centering\small
 \begin{tabular}{p{4.0cm}p{5.2cm}p{5.0cm}}
 \toprule
@@ -878,6 +1034,15 @@ nothing --- we had mistaken a classical theorem for an open question\\
 \midrule
 the Casimir reading \eqref{eq:casimir} & the formula is the classical variance~\cite{Neuschel} &
 the reading of $k(k+2)$ as $4j(j+1)$; an interpretation, not a theorem\\
+\midrule
+\rowcolor{softgrey}
+the inversion \eqref{eq:inverse} \textbf{(v4)} & its two ingredients are \eqref{eq:casimir} and
+$(k+1)^2=C_k+1$ & ours, and elementary: that $M_0$ carries $e_3$ is what makes three moments
+enough\\
+\midrule
+the index reading \eqref{eq:index} \textbf{(v4)} & the trace of an involution on $V_\lambda$ is a
+textbook object & ours: the identification of $\zeta$ with its sign and of the box volume with its
+magnitude\\
 \bottomrule
 \end{tabular}
 \caption{What each item owes. The novelty here is one identity and one change of basis; every
@@ -943,9 +1108,11 @@ The rank-one identity does suggest that restrictions of polynomial $GL(2n)$ char
 non-identity component of $O(2n)$ may admit a description governed by the $2$-quotient. We
 state that as a direction and not as a principle, and we attach to it the evidence against:
 \S\ref{sec:ranktwo} shows that any higher-rank statement will be more complicated than a
-factorisation, because at rank two a partition vanishes for a reason our criterion cannot see.
-Naming a phenomenon on the strength of one rank, one unproved identity, and one range where it
-already fails would be premature, and we decline to.
+factorisation, since there the generic outcome is a signed sum. \emph{Version~4 withdraws the
+second piece of evidence we gave here}, that at rank two a partition vanishes for a reason our
+criterion cannot see; it does not, and the correction leaves the direction in better shape than we
+left it. Naming a phenomenon on the strength of one rank and one unproved identity would still be
+premature, and we still decline to.
 
 % ===================================================================
 \section{Conclusion}\label{sec:conclusion}
@@ -961,6 +1128,18 @@ is a parity character rather than a constant --- a hypothesis nobody had to stat
 alphabet with two inversion-fixed points made it fail. The statement is verified on $7905$
 partitions across two ranges by two independent implementations and is not proved. Rank two is
 open, and the shape of what is missing there is stated precisely enough to be attacked.
+
+Version~4 changes three things and none of them is the identity. The dichotomy of
+\S\ref{sec:zero} is forced rather than observed --- two of the three factors cannot vanish at all,
+so the size-three profile never does. The reduction $\Phi=F\circ Q$ is invertible in closed form
+(Proposition~\ref{prop:inverse}),
+which upgrades ``the physics sees only three integers'' to ``the three integers and what the
+physics sees are the same data''; and the sign and the size of that reduction turn out to be one
+object, the parity index of the orbifold involution, so that \eqref{eq:index} answers a question
+versions~1--3 raised and could not settle. And the rank-two partition that versions~1--3 offered as a third
+cause of vanishing is withdrawn: it is the second cause in six parts, and the second cause holds at
+every rank for the same two lines that give it here. What is open at rank two is now the converse
+alone.
 
 % ===================================================================
 \begin{thebibliography}{99}

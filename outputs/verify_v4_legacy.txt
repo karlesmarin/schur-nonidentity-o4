@@ -1,0 +1,32 @@
+Part IV -- the four legacy numbers, recomputed
+
+  [105->109] s_lambda(1,-1,t,1/t) vs +- const * s_{lambda^(0)}(1,t,1/t)
+        parts<=5 : 109 non-vanishing non-trivial cases, 0 proportional
+  PASS 109 cases (four rows, parts <= 5, trivial rep excluded), 0 proportional  --  109 cases, 0 proportional
+        parts<=6 : 185 non-vanishing non-trivial cases, 0 proportional
+        parts<=7 : 289 non-vanishing non-trivial cases, 0 proportional
+        parts<=8 : 438 non-vanishing non-trivial cases, 0 proportional
+
+  [729] moment identity over p,q,r <= 8: 729 ordered triples
+        r=1 : in the ring, coeff(e1^1) = 1/3
+        r=2 : in the ring, coeff(e1^2) = 1/5
+        r=3 : in the ring, coeff(e1^3) = 1/7
+        r=4 : in the ring, coeff(e1^4) = 1/9
+        r=5 : in the ring, coeff(e1^5) = 1/11
+        r=6 : in the ring, coeff(e1^6) = 1/13
+        r=7 : in the ring, coeff(e1^7) = 1/15
+        r=8 : in the ring, coeff(e1^8) = 1/17
+  PASS 729 triples, r = 1..8: the tower lies in Q[e1,e2,e3] and coeff(e1^r) = 1/(2r+1)
+
+  [216] Casimir forms over p,q,r <= 5: 216 ordered triples
+  PASS 216 triples agree with the Casimir forms  --  216 of 216
+  PASS control: shifting one index agrees in 0 of 216  --  0
+  PASS control: 4/15 -> 3/15 agrees in 1 of 216  --  1
+
+  [3375] shape of |delta| over p,q,r <= 14: 3375 ordered triples
+  PASS 3375 triples: |delta| symmetric, gap-free, log-concave, unimodal  --  {'symmetric': 0, 'gap-free': 0, 'log-concave': 0, 'unimodal': 0}
+  PASS section 8: (6,6,0,0),(4,4,2,2) give + and (5,5,1,1),(3,3,3,3) give -  --  {(6, 6, 0, 0): '+', (4, 4, 2, 2): '+', (5, 5, 1, 1): '-', (3, 3, 3, 3): '-'}
+  PASS section 8: on (a,a,b,b) the sign is (-1)^{lambda_1}, a <= 12  --  0 exceptions
+  PASS section 5 control: the shifted index agrees in 0 of 1612  --  0 of 1612
+
+ALL CHECKS PASS

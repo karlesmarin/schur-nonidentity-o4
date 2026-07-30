@@ -1,0 +1,13 @@
+Part IV -- is the moment tower invertible?
+
+  PASS e_1 = 3 M_2/M_0 and e_2 = (15/4)M_4/M_0 - (3/4)e_1^2 + e_1  --  2925 triples, 0 failures
+  PASS M_0^2 = 1 + e_1 + e_2 + e_3  --  2925 triples, 0 failures
+  PASS the three indices are recovered from (M_0,M_2,M_4), as a multiset  --  2925 triples, 0 failures
+  PASS M_6/M_0 is a polynomial in e_1,e_2,e_3  --  coefficients 1/7, 4/7, 16/21, -4/7, -32/21, 16/21, 0
+  PASS and its coefficient on e_3 is non-zero  --  coeff(e_3) = 16/21
+  PASS the fit holds out of sample  --  2540 triples held out, 0 failures
+  PASS (M_0,M_2,M_4,M_6) separates unordered triples  --  2925 triples, 0 collisions
+  INFO  dropping M_6: 0 collisions among 2925 triples
+  PASS control: with C_k = k(k+3) no polynomial fits
+
+ALL CHECKS PASS

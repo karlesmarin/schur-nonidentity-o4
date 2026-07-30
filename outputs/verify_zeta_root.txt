@@ -1,0 +1,14 @@
+What is zeta?  A descent, one computation per question.
+
+  PASS Q2: M_0 from the closed form equals D(1) = s_lambda(1,-1,1,1)  --  3060 partitions, 0 failures
+  INFO  section 3's zeta differs from the total sign on 700 of 3060 partitions (the balanced branch with z < 0)
+  PASS Q3: D(1) = Tr(sigma|V_lambda) = n_+ - n_-, counted over the weight basis  --  400 partitions, 0 failures
+        (14, 14, 14, 14) dim 1      n_+ 1      n_- 0       n_+-n_- = 1
+        (14, 14, 14, 13) dim 4      n_+ 3      n_- 1       n_+-n_- = 2
+        (14, 14, 14, 12) dim 10     n_+ 7      n_- 3       n_+-n_- = 4
+  PASS control: lambda -> lambda+(1^4) permutes the box and flips the sign  --  0 failures
+  PASS control: D_{lambda+(1^4)} = -D_lambda, i.e. the twist is det(A) = -1  --  0 failures
+  PASS THE IDENTITY: (p+1)(q+1)(r+1) = |n_+ - n_-|, the box volume is the parity index  --  3060 partitions, 0 failures
+  PASS control: the index does not depend on which coordinate carries the -1  --  0 failures
+
+ALL CHECKS PASS
