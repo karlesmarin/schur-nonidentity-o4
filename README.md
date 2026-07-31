@@ -16,7 +16,9 @@
 >   → [github.com/karlesmarin/su4-sm-cell-criterion](https://github.com/karlesmarin/su4-sm-cell-criterion) · [Zenodo 10.5281/zenodo.21432627](https://doi.org/10.5281/zenodo.21432627)
 > - **Part III — *A Centre-Charge Selection Rule for the Wilson-Line Potential***
 >   → [github.com/karlesmarin/centre-parity-selection](https://github.com/karlesmarin/centre-parity-selection) · [Zenodo 10.5281/zenodo.21438226](https://doi.org/10.5281/zenodo.21438226)
-> - **Part IV — *Schur Functions at $(1,-1,t,t^{-1})$*** (this repo)
+> - **Part IV — *Schur Functions at (1,−1,t,t⁻¹)*** (this repo)
+> - **Part V — *What the Higgs Potential Cannot See***
+>   → [github.com/karlesmarin/higgs-blind-class](https://github.com/karlesmarin/higgs-blind-class) · [Zenodo 10.5281/zenodo.21727095](https://doi.org/10.5281/zenodo.21727095)
 
 ## 🎯 The closed form
 
