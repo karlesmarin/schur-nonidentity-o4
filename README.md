@@ -18,7 +18,7 @@
 >   → [github.com/karlesmarin/centre-parity-selection](https://github.com/karlesmarin/centre-parity-selection) · [Zenodo 10.5281/zenodo.21438226](https://doi.org/10.5281/zenodo.21438226)
 > - **Part IV — *Schur Functions at (1,−1,t,t⁻¹)*** (this repo)
 > - **Part V — *What the Higgs Potential Cannot See***
->   → [github.com/karlesmarin/higgs-blind-class](https://github.com/karlesmarin/higgs-blind-class) · [Zenodo 10.5281/zenodo.21727095](https://doi.org/10.5281/zenodo.21727095)
+>   → [github.com/karlesmarin/higgs-blind-class](https://github.com/karlesmarin/higgs-blind-class) · [Zenodo 10.5281/zenodo.21727094](https://doi.org/10.5281/zenodo.21727094)
 
 ## 🎯 The closed form
 
